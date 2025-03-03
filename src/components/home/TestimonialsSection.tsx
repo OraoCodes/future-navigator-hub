@@ -16,12 +16,6 @@ const TestimonialsSection = () => {
       role: "Product Manager at iCapital",
       image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=120&h=120&q=80",
       testimonial: "The CV review service transformed my resume from good to exceptional. I started getting calls from recruiters within days of making the recommended changes."
-    },
-    {
-      name: "David Mwangi",
-      role: "UX Designer at Safaricom",
-      image: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?ixlib=rb-1.2.1&auto=format&fit=crop&w=120&h=120&q=80",
-      testimonial: "The portfolio review helped me identify gaps in my work samples and refine my design process. I'm now confident showcasing my skills to potential employers."
     }
   ];
 
@@ -36,7 +30,7 @@ const TestimonialsSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -58,7 +52,7 @@ const TestimonialsSection = () => {
                   <p className="text-sm text-gray-500">{testimonial.role}</p>
                 </div>
               </div>
-              <p className="text-gray-600 italic">
+              <p className="text-gray-600">
                 "{testimonial.testimonial}"
               </p>
             </motion.div>
