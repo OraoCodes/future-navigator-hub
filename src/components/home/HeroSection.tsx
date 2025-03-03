@@ -44,13 +44,13 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-4"
             >
               <Link to="/services">
-                <Button className="primary-button w-full sm:w-auto">
+                <Button className="bg-archeoblue hover:bg-archeoblue/90 text-white font-medium px-6 py-3 rounded-lg shadow-md w-full sm:w-auto">
                   Book a Session
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Link to="/about">
-                <Button className="secondary-button w-full sm:w-auto">
+                <Button className="bg-white border-2 border-archeoblue text-archeoblue hover:bg-archeoblue/5 font-medium px-6 py-3 rounded-lg shadow-sm w-full sm:w-auto">
                   Learn More
                 </Button>
               </Link>

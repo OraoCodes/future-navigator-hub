@@ -16,7 +16,7 @@ const CTASection = () => {
             </p>
           </div>
           <Link to="/services">
-            <Button className="bg-archeoyellow text-archeoblue hover:bg-archeoyellow/90 premium-button">
+            <Button className="bg-archeoyellow text-archeoblue hover:bg-white font-medium px-6 py-3 rounded-lg shadow-md transition-colors duration-300">
               Book Your Session
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
