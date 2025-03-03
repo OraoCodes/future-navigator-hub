@@ -67,10 +67,22 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
         <div className="h-full flex flex-col overflow-hidden">
           {/* Sidebar header with logo */}
           <div className="flex items-center justify-between h-16 px-4 border-b border-white/10">
-            {isOpen && (
+            {isOpen ? (
               <Link to="/admin" className="flex items-center gap-2">
-                <span className="text-white font-bold">CareerMentor</span>
+                <img 
+                  src="/lovable-uploads/d79c5030-b4c4-4cf5-bf4d-b2eae7ae7111.png" 
+                  alt="Archeohub Logo" 
+                  className="h-8" 
+                />
               </Link>
+            ) : (
+              <div className="hidden md:block mx-auto">
+                <img 
+                  src="/lovable-uploads/d79c5030-b4c4-4cf5-bf4d-b2eae7ae7111.png" 
+                  alt="Archeohub Logo" 
+                  className="h-8 w-8 object-contain" 
+                />
+              </div>
             )}
             
             <Button 
@@ -117,7 +129,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-white truncate">{user?.name || "Admin"}</p>
-                  <p className="text-xs text-white/70 truncate">{user?.email || "admin@careermentor.com"}</p>
+                  <p className="text-xs text-white/70 truncate">{user?.email || "admin@archeohub.com"}</p>
                 </div>
               </div>
             ) : (

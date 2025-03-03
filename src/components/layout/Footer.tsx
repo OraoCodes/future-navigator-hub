@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -8,7 +9,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="flex items-center gap-2">
-              <span className="text-navy font-bold text-xl">Archeohub</span>
+              <img 
+                src="/lovable-uploads/d79c5030-b4c4-4cf5-bf4d-b2eae7ae7111.png" 
+                alt="Archeohub Logo" 
+                className="h-12 mb-3" 
+              />
             </Link>
             <p className="mt-4 text-gray-600 text-sm">
               Premium tech career coaching for professionals seeking to advance their careers.

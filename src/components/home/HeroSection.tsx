@@ -62,17 +62,13 @@ const HeroSection = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
-              className="relative w-full aspect-square max-w-md mx-auto"
+              className="relative w-full max-w-md mx-auto"
             >
-              <div className="absolute inset-0 bg-archeoblue/5 rounded-full animate-pulse"></div>
-              <div className="absolute inset-3 bg-archeoblue/10 rounded-full"></div>
-              <div className="absolute inset-6 bg-white rounded-full shadow-xl flex items-center justify-center">
-                <img 
-                  src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" 
-                  alt="Thriving Tech Professional" 
-                  className="w-full h-full object-cover rounded-full"
-                />
-              </div>
+              <img 
+                src="/lovable-uploads/d79c5030-b4c4-4cf5-bf4d-b2eae7ae7111.png" 
+                alt="Archeohub Logo" 
+                className="w-full h-auto"
+              />
             </motion.div>
           </div>
         </div>

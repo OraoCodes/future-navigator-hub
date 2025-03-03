@@ -45,7 +45,11 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-navy font-bold text-xl">Archeohub</span>
+            <img 
+              src="/lovable-uploads/d79c5030-b4c4-4cf5-bf4d-b2eae7ae7111.png" 
+              alt="Archeohub Logo" 
+              className="h-10" 
+            />
           </Link>
 
           {/* Desktop Navigation */}

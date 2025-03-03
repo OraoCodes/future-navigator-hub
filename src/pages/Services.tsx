@@ -1,3 +1,4 @@
+
 import React from "react";
 import MainLayout from "@/components/layout/MainLayout";
 import ServiceGrid from "@/components/services/ServiceGrid";
@@ -20,6 +21,19 @@ const Services = () => {
         <div className="container mx-auto max-w-6xl">
           {/* Header */}
           <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-6"
+            >
+              <img 
+                src="/lovable-uploads/d79c5030-b4c4-4cf5-bf4d-b2eae7ae7111.png" 
+                alt="Archeohub Logo" 
+                className="h-16 mx-auto" 
+              />
+            </motion.div>
+            
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
