@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { Card, CardContent } from "@/components/ui/card";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -59,16 +61,50 @@ const Contact = () => {
     }
   };
 
+  const contactInfo = [
+    {
+      icon: <Mail className="h-5 w-5 text-archeoblue" />,
+      title: "Email",
+      value: "info@archeohub.com",
+      link: "mailto:info@archeohub.com"
+    },
+    {
+      icon: <Phone className="h-5 w-5 text-archeoblue" />,
+      title: "Phone",
+      value: "+254 712 345 678",
+      link: "tel:+254712345678"
+    },
+    {
+      icon: <MapPin className="h-5 w-5 text-archeoblue" />,
+      title: "Address",
+      value: "Westlands Business Park, Nairobi, Kenya",
+      link: "https://maps.google.com/?q=Westlands+Business+Park+Nairobi+Kenya"
+    },
+    {
+      icon: <Clock className="h-5 w-5 text-archeoblue" />,
+      title: "Hours",
+      value: "Monday - Friday: 9AM - 6PM",
+      link: null
+    }
+  ];
+
   return (
     <MainLayout>
       <div className="py-16 px-4">
-        <div className="container mx-auto max-w-5xl">
+        <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="gold-accent mb-4 inline-block">Get in Touch</span>
+            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-4xl font-bold text-navy mb-4"
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-4xl font-bold text-archeoblue mb-4"
             >
               Contact Us
             </motion.h1>
@@ -82,100 +118,110 @@ const Contact = () => {
             </motion.p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+          <div className="grid md:grid-cols-5 gap-12 items-start">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="bg-white p-8 rounded-lg shadow-sm border"
+              className="md:col-span-3"
             >
-              <h2 className="text-2xl font-semibold text-navy mb-6">Get In Touch</h2>
-              <form className="space-y-5" onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                    Your Name
-                  </label>
-                  <Input 
-                    id="name" 
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Enter your full name" 
-                    required 
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email Address
-                  </label>
-                  <Input 
-                    id="email" 
-                    type="email" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email address" 
-                    required 
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Your Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="How can we help you?"
-                    className="min-h-[150px]"
-                    required
-                  />
-                </div>
-                <Button 
-                  type="submit" 
-                  className="w-full bg-navy text-white hover:bg-navy/90"
-                  disabled={isLoading}
-                >
-                  {isLoading ? "Sending..." : "Send Message"}
-                </Button>
-              </form>
+              <Card className="border-archeoblue/10">
+                <CardContent className="p-6 md:p-8">
+                  <h2 className="text-2xl font-semibold text-archeoblue mb-6">Send Us a Message</h2>
+                  <form className="space-y-5" onSubmit={handleSubmit}>
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                        Your Name
+                      </label>
+                      <Input 
+                        id="name" 
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Enter your full name" 
+                        className="border-archeoblue/20 focus:border-archeoblue/50"
+                        required 
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                        Email Address
+                      </label>
+                      <Input 
+                        id="email" 
+                        type="email" 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email address" 
+                        className="border-archeoblue/20 focus:border-archeoblue/50"
+                        required 
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                        Your Message
+                      </label>
+                      <Textarea
+                        id="message"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder="How can we help you?"
+                        className="min-h-[150px] border-archeoblue/20 focus:border-archeoblue/50"
+                        required
+                      />
+                    </div>
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-archeoblue text-white hover:bg-archeoblue/90"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? "Sending..." : "Send Message"}
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="space-y-8"
+              className="md:col-span-2 space-y-8"
             >
-              <div>
-                <h2 className="text-2xl font-semibold text-navy mb-4">Office Hours</h2>
-                <p className="text-gray-600 mb-2">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                <p className="text-gray-600">Saturday - Sunday: Closed</p>
-              </div>
-              
-              <div>
-                <h2 className="text-2xl font-semibold text-navy mb-4">Contact Information</h2>
-                <div className="space-y-3">
-                  <p className="flex items-start">
-                    <span className="text-navy font-medium mr-2">Email:</span>
-                    <a href="mailto:info@careermentor.com" className="text-gray-600 hover:text-navy">info@careermentor.com</a>
-                  </p>
-                  <p className="flex items-start">
-                    <span className="text-navy font-medium mr-2">Phone:</span>
-                    <a href="tel:+11234567890" className="text-gray-600 hover:text-navy">+1 (123) 456-7890</a>
-                  </p>
-                  <p className="flex items-start">
-                    <span className="text-navy font-medium mr-2">Address:</span>
-                    <span className="text-gray-600">123 Career Avenue, Suite 200<br />San Francisco, CA 94103</span>
-                  </p>
+              <div className="bg-gray-50 p-6 md:p-8 rounded-xl">
+                <h3 className="text-xl font-semibold text-archeoblue mb-6">Contact Information</h3>
+                <div className="space-y-5">
+                  {contactInfo.map((item, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <div className="mt-1 rounded-full bg-archeoblue/10 p-2">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500">{item.title}</p>
+                        {item.link ? (
+                          <a 
+                            href={item.link} 
+                            className="text-archeoblue hover:text-archeoblue/80 transition-colors"
+                            target={item.title === "Address" ? "_blank" : undefined}
+                            rel={item.title === "Address" ? "noopener noreferrer" : undefined}
+                          >
+                            {item.value}
+                          </a>
+                        ) : (
+                          <p className="text-archeoblue">{item.value}</p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
               
-              <div>
-                <h2 className="text-2xl font-semibold text-navy mb-4">Follow Us</h2>
-                <div className="flex space-x-4">
-                  <a href="#" className="text-navy hover:text-navy/80">LinkedIn</a>
-                  <a href="#" className="text-navy hover:text-navy/80">Twitter</a>
-                  <a href="#" className="text-navy hover:text-navy/80">Facebook</a>
-                  <a href="#" className="text-navy hover:text-navy/80">Instagram</a>
+              <div className="bg-gray-50 p-6 md:p-8 rounded-xl">
+                <h3 className="text-xl font-semibold text-archeoblue mb-6">Follow Us</h3>
+                <div className="flex flex-wrap gap-4">
+                  <a href="#" className="bg-white text-archeoblue px-4 py-2 rounded-lg hover:bg-archeoblue hover:text-white transition-colors duration-300 shadow-sm">LinkedIn</a>
+                  <a href="#" className="bg-white text-archeoblue px-4 py-2 rounded-lg hover:bg-archeoblue hover:text-white transition-colors duration-300 shadow-sm">Twitter</a>
+                  <a href="#" className="bg-white text-archeoblue px-4 py-2 rounded-lg hover:bg-archeoblue hover:text-white transition-colors duration-300 shadow-sm">Facebook</a>
+                  <a href="#" className="bg-white text-archeoblue px-4 py-2 rounded-lg hover:bg-archeoblue hover:text-white transition-colors duration-300 shadow-sm">Instagram</a>
                 </div>
               </div>
             </motion.div>

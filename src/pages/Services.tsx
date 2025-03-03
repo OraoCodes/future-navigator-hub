@@ -46,7 +46,7 @@ const Services = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-bold text-navy tracking-tight mb-6"
+              className="text-4xl md:text-5xl font-bold text-archeoblue tracking-tight mb-6"
             >
               Premium Career Coaching Services
             </motion.h1>
@@ -70,7 +70,7 @@ const Services = () => {
           <div className="mt-20 bg-gray-50 rounded-2xl p-8 md:p-12">
             <div className="flex flex-col md:flex-row gap-12">
               <div className="md:w-1/2">
-                <h2 className="text-2xl md:text-3xl font-bold text-navy mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold text-archeoblue mb-6">
                   Why Choose Archeohub?
                 </h2>
                 <p className="text-gray-600 mb-8">
@@ -86,7 +86,7 @@ const Services = () => {
                       viewport={{ once: true }}
                       className="flex items-start gap-2"
                     >
-                      <div className="mt-1 rounded-full p-1 bg-emerald-100 text-emerald-800">
+                      <div className="mt-1 rounded-full p-1 bg-archeogreen/20 text-archeogreen">
                         <CheckIcon size={14} />
                       </div>
                       <span>{benefit}</span>
@@ -96,31 +96,31 @@ const Services = () => {
               </div>
               
               <div className="md:w-1/2">
-                <div className="bg-white rounded-xl p-6 shadow-sm border">
-                  <h3 className="text-xl font-semibold text-navy mb-4">
+                <div className="bg-white rounded-xl p-6 shadow-sm border border-archeoblue/5">
+                  <h3 className="text-xl font-semibold text-archeoblue mb-4">
                     Frequently Asked Questions
                   </h3>
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-medium text-navy">How do I prepare for my session?</h4>
+                      <h4 className="font-medium text-archeoblue">How do I prepare for my session?</h4>
                       <p className="text-gray-600 mt-1 text-sm">
                         After booking, you'll receive an email with preparation instructions and any materials to share with your coach beforehand.
                       </p>
                     </div>
                     <div>
-                      <h4 className="font-medium text-navy">What happens if I need to reschedule?</h4>
+                      <h4 className="font-medium text-archeoblue">What happens if I need to reschedule?</h4>
                       <p className="text-gray-600 mt-1 text-sm">
                         You can reschedule for free up to 24 hours before your session. Late cancellations may incur a fee.
                       </p>
                     </div>
                     <div>
-                      <h4 className="font-medium text-navy">How are sessions conducted?</h4>
+                      <h4 className="font-medium text-archeoblue">How are sessions conducted?</h4>
                       <p className="text-gray-600 mt-1 text-sm">
                         All sessions are held via Zoom. You'll receive a link after booking and reminders before your session.
                       </p>
                     </div>
                     <div>
-                      <h4 className="font-medium text-navy">Do you offer package discounts?</h4>
+                      <h4 className="font-medium text-archeoblue">Do you offer package discounts?</h4>
                       <p className="text-gray-600 mt-1 text-sm">
                         Yes, we offer discounted rates when you book multiple sessions. Contact us for details.
                       </p>
