@@ -48,7 +48,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       </div>
       
       <Link to={path}>
-        <Button className="w-full bg-navy text-white hover:bg-navy/90 transition-all duration-300">
+        <Button className="w-full bg-archeoblue text-white hover:bg-archeoblue/90 font-medium py-3 rounded-md shadow-md transition-all duration-300">
           Book Now
         </Button>
       </Link>
