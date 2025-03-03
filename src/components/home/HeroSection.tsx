@@ -59,7 +59,7 @@ const HeroSection = () => {
           
           <div className="flex-1">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 1, scale: 1 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
               className="relative w-full max-w-md mx-auto"
@@ -73,19 +73,25 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-tr from-archeoblue/10 to-transparent pointer-events-none rounded-full"></div>
               </div>
               
-              {/* Decorative circles with permanent visibility */}
+              {/* Fully visible decorative circles */}
               <motion.div 
                 className="absolute -z-10 -bottom-6 -right-6 w-32 h-32 rounded-full bg-archeoyellow cursor-pointer hover:bg-archeoyellow/80 transition-colors"
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 1 }}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               ></motion.div>
               <motion.div 
                 className="absolute -z-10 -top-6 -left-6 w-24 h-24 rounded-full bg-archeogreen cursor-pointer hover:bg-archeogreen/80 transition-colors" 
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 1 }}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               ></motion.div>
               <motion.div 
                 className="absolute -z-10 top-1/2 -translate-y-1/2 -right-4 w-16 h-16 rounded-full bg-archeoblue cursor-pointer hover:bg-archeoblue/80 transition-colors" 
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 1 }}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               ></motion.div>
