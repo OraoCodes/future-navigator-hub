@@ -64,11 +64,7 @@ const HeroSection = () => {
               transition={{ duration: 0.6 }}
               className="relative w-full max-w-md mx-auto"
             >
-              <img 
-                src="/lovable-uploads/d79c5030-b4c4-4cf5-bf4d-b2eae7ae7111.png" 
-                alt="Archeohub Logo" 
-                className="w-full h-auto"
-              />
+              {/* Logo image removed from here */}
             </motion.div>
           </div>
         </div>
