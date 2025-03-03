@@ -64,13 +64,13 @@ const HeroSection = () => {
               transition={{ duration: 0.6 }}
               className="relative w-full max-w-md mx-auto"
             >
-              <div className="relative rounded-2xl shadow-xl overflow-hidden bg-white">
+              <div className="relative aspect-square rounded-full shadow-xl overflow-hidden bg-white border-4 border-white mx-auto" style={{ width: '350px', height: '350px' }}>
                 <img 
                   src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
                   alt="Young black tech professional" 
-                  className="w-full h-auto object-cover"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-archeoblue/10 to-transparent pointer-events-none rounded-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-archeoblue/10 to-transparent pointer-events-none rounded-full"></div>
               </div>
               
               {/* Abstract decorative elements */}
