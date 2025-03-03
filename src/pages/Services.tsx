@@ -1,4 +1,3 @@
-
 import React from "react";
 import MainLayout from "@/components/layout/MainLayout";
 import ServiceGrid from "@/components/services/ServiceGrid";
@@ -58,7 +57,7 @@ const Services = () => {
             <div className="flex flex-col md:flex-row gap-12">
               <div className="md:w-1/2">
                 <h2 className="text-2xl md:text-3xl font-bold text-navy mb-6">
-                  Why Choose CareerMentor?
+                  Why Choose Archeohub?
                 </h2>
                 <p className="text-gray-600 mb-8">
                   We provide specialized coaching for tech professionals at all career stages. Our experienced coaches have helped hundreds of clients land their dream jobs, negotiate higher salaries, and advance their careers.
