@@ -71,7 +71,7 @@ const Terms = () => {
             <h2>10. Contact Us</h2>
             <p>
               If you have any questions about these Terms, please contact us at:
-              legal@careermentor.example.com
+              legal@archeohub.com
             </p>
           </div>
         </div>

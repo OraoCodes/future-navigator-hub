@@ -59,7 +59,7 @@ const Cookies = () => {
             <h2>6. Contact Us</h2>
             <p>
               If you have any questions about our Cookie Policy, please contact us at:
-              privacy@careermentor.example.com
+              privacy@archeohub.com
             </p>
           </div>
         </div>

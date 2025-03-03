@@ -74,7 +74,7 @@ const Privacy = () => {
             <h2>7. Contact Us</h2>
             <p>
               If you have any questions about this Privacy Policy, please contact us at:
-              privacy@careermentor.example.com
+              privacy@archeohub.com
             </p>
           </div>
         </div>

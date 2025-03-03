@@ -55,7 +55,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       await new Promise(resolve => setTimeout(resolve, 500));
       
-      if (email === "admin@careermentor.com" && password === "admin123") {
+      if (email === "admin@archeohub.com" && password === "admin123") {
         const adminUser: User = {
           id: "admin-1",
           name: "Admin User",
