@@ -65,22 +65,7 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				},
-				// New pastel colors inspired by the design
-				pastel: {
-					purple: "#E2D6FF",
-					green: "#D6F5D6",
-					orange: "#FFE0C2",
-					blue: "#D6E5FF",
-					pink: "#FFDCE5",
-					yellow: "#FFF8C2"
-				},
-				// New accent colors
-				accent1: "#8B5CF6", // Purple
-				accent2: "#10B981", // Green
-				accent3: "#F97316", // Orange
-				accent4: "#3B82F6", // Blue
-				accent5: "#EC4899"  // Pink
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
