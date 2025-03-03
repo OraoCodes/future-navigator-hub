@@ -71,9 +71,9 @@ const Index = () => {
                 <div className="absolute inset-3 bg-navy/10 rounded-full"></div>
                 <div className="absolute inset-6 bg-white rounded-full shadow-xl flex items-center justify-center">
                   <img 
-                    src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" 
-                    alt="Career Coaching" 
-                    className="w-2/3 h-2/3 object-contain rounded-full"
+                    src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" 
+                    alt="Thriving Tech Professional" 
+                    className="w-full h-full object-cover rounded-full"
                   />
                 </div>
               </motion.div>
