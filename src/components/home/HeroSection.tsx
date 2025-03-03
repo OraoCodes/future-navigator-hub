@@ -64,7 +64,18 @@ const HeroSection = () => {
               transition={{ duration: 0.6 }}
               className="relative w-full max-w-md mx-auto"
             >
-              {/* Logo image removed from here */}
+              <div className="relative rounded-2xl shadow-xl overflow-hidden bg-white">
+                <img 
+                  src="/lovable-uploads/d79c5030-b4c4-4cf5-bf4d-b2eae7ae7111.png" 
+                  alt="Tech Career Coaching" 
+                  className="w-full h-auto object-contain p-6"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-archeoblue/10 to-transparent pointer-events-none rounded-2xl"></div>
+              </div>
+              
+              {/* Abstract decorative elements */}
+              <div className="absolute -z-10 -bottom-6 -right-6 w-32 h-32 rounded-full bg-archeoyellow/20 animate-float"></div>
+              <div className="absolute -z-10 -top-6 -left-6 w-24 h-24 rounded-full bg-archeogreen/20 animate-float" style={{ animationDelay: '1s' }}></div>
             </motion.div>
           </div>
         </div>
