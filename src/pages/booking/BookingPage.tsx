@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import MainLayout from "@/components/layout/MainLayout";
@@ -9,6 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { useUser } from "@/contexts/UserContext";
+import { calendarService } from "@/services/calendarService";
 
 interface ServiceDetails {
   title: string;
@@ -22,11 +23,12 @@ const BookingPage = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { user, isAuthenticated } = useUser();
   
   const [step, setStep] = useState(1);
   const [bookingDetails, setBookingDetails] = useState({
-    name: "",
-    email: "",
+    name: user?.name || "",
+    email: user?.email || "",
     phone: "",
     date: "",
     time: "",
@@ -76,6 +78,16 @@ const BookingPage = () => {
     );
   }
   
+  React.useEffect(() => {
+    if (isAuthenticated && user) {
+      setBookingDetails((prevDetails) => ({
+        ...prevDetails,
+        name: user.name || prevDetails.name,
+        email: user.email || prevDetails.email,
+      }));
+    }
+  }, [isAuthenticated, user]);
+  
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setBookingDetails({
@@ -86,7 +98,6 @@ const BookingPage = () => {
   
   const nextStep = () => {
     if (step === 1) {
-      // Validate contact information
       if (!bookingDetails.name || !bookingDetails.email) {
         toast({
           title: "Missing Information",
@@ -96,7 +107,6 @@ const BookingPage = () => {
         return;
       }
     } else if (step === 2) {
-      // Validate date and time
       if (!bookingDetails.date || !bookingDetails.time) {
         toast({
           title: "Missing Information",
@@ -116,23 +126,74 @@ const BookingPage = () => {
     window.scrollTo(0, 0);
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // In a real application, this would connect to your payment provider
-    // and then create the booking in your database
-    
-    // Mock the payment and booking process
-    console.log("Booking details:", bookingDetails);
-    
-    // Show success message
-    toast({
-      title: "Booking Successful!",
-      description: "You will receive a confirmation email shortly.",
-    });
-    
-    // Redirect to confirmation page
-    navigate("/booking/confirmation");
+    try {
+      const dateTimeString = `${bookingDetails.date}T${bookingDetails.time.split(' ')[0]}:00`;
+      const startDateTime = new Date(dateTimeString);
+      
+      const durationMinutes = serviceDetails.duration.includes("45") 
+        ? 45 
+        : serviceDetails.duration.includes("60") 
+        ? 60 
+        : 30;
+      
+      const endDateTime = new Date(startDateTime.getTime() + durationMinutes * 60000);
+      
+      const calendarResult = await calendarService.createEvent(
+        user?.id || "guest",
+        {
+          summary: `${serviceDetails.title} with ${bookingDetails.name}`,
+          description: bookingDetails.notes || `${serviceDetails.title} session`,
+          start: {
+            dateTime: startDateTime.toISOString(),
+            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          },
+          end: {
+            dateTime: endDateTime.toISOString(),
+            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          },
+          attendees: [
+            {
+              email: bookingDetails.email,
+              name: bookingDetails.name,
+            },
+          ],
+        }
+      );
+      
+      if (calendarResult.success) {
+        localStorage.setItem(
+          "lastBooking", 
+          JSON.stringify({
+            serviceTitle: serviceDetails.title,
+            date: bookingDetails.date,
+            time: bookingDetails.time,
+            clientName: bookingDetails.name,
+            clientEmail: bookingDetails.email,
+            duration: serviceDetails.duration,
+            price: serviceDetails.price,
+          })
+        );
+        
+        toast({
+          title: "Booking Successful!",
+          description: "Your session has been scheduled. Check your email for confirmation.",
+        });
+        
+        navigate("/booking/confirmation");
+      } else {
+        throw new Error(calendarResult.error || "Failed to create calendar event");
+      }
+    } catch (error) {
+      console.error("Booking error:", error);
+      toast({
+        title: "Booking Error",
+        description: error instanceof Error ? error.message : "An error occurred while processing your booking",
+        variant: "destructive",
+      });
+    }
   };
   
   const availableTimes = [
@@ -156,7 +217,6 @@ const BookingPage = () => {
             </p>
           </div>
           
-          {/* Progress Steps */}
           <div className="mb-8">
             <div className="flex items-center justify-between max-w-md mx-auto">
               <div className="flex flex-col items-center">
@@ -193,7 +253,6 @@ const BookingPage = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Form Section */}
             <div className="md:col-span-2">
               <Card className="shadow-sm">
                 <CardContent className="p-6">
@@ -339,7 +398,6 @@ const BookingPage = () => {
                           </div>
                         </div>
                         
-                        {/* Mock payment form - would be replaced with Stripe or PayPal */}
                         <div className="space-y-2">
                           <Label htmlFor="cardName">Name on Card</Label>
                           <Input
@@ -396,7 +454,6 @@ const BookingPage = () => {
               </Card>
             </div>
             
-            {/* Service Summary Section */}
             <div className="md:col-span-1">
               <Card className="shadow-sm bg-navy/5">
                 <CardContent className="p-6">

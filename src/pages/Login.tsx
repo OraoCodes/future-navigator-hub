@@ -6,39 +6,53 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { useUser } from "@/contexts/UserContext";
 
 const Login = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { login } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simple admin check - in a real app, this would be authenticated properly
-    if (email === "admin@careermentor.com" && password === "admin123") {
-      toast({
-        title: "Login successful",
-        description: "Welcome to the admin dashboard.",
-      });
+    try {
+      const success = await login(email, password);
       
-      // Simulate a loading delay
-      setTimeout(() => {
-        setIsLoading(false);
-        navigate("/admin");
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        setIsLoading(false);
+      if (success) {
+        toast({
+          title: "Login successful",
+          description: email === "admin@careermentor.com" 
+            ? "Welcome to the admin dashboard." 
+            : "Welcome back to CareerMentor.",
+        });
+        
+        // Redirect based on user role
+        if (email === "admin@careermentor.com") {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
+      } else {
         toast({
           title: "Login failed",
           description: "Invalid email or password. For admin access, use admin@careermentor.com / admin123",
           variant: "destructive",
         });
-      }, 1000);
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      toast({
+        title: "Login error",
+        description: "An unexpected error occurred during login.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 

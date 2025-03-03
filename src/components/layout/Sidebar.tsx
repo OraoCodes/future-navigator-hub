@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { 
   Calendar, 
@@ -13,6 +13,8 @@ import {
   LogOut,
   Bell
 } from "lucide-react";
+import { useUser } from "@/contexts/UserContext";
+import { useToast } from "@/hooks/use-toast";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -21,6 +23,9 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, logout } = useUser();
+  const { toast } = useToast();
   
   const navItems = [
     { name: "Calendar", icon: Calendar, path: "/admin/calendar" },
@@ -30,6 +35,19 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
     { name: "Notifications", icon: Bell, path: "/admin/notifications" },
     { name: "Settings", icon: Settings, path: "/admin/settings" },
   ];
+
+  const handleLogout = () => {
+    logout();
+    toast({
+      title: "Logged out",
+      description: "You have been successfully logged out.",
+    });
+    navigate("/");
+  };
+
+  const userInitials = user?.name
+    ? user.name.split(' ').map(n => n[0]).join('').toUpperCase()
+    : "AM";
 
   return (
     <>
@@ -95,17 +113,17 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
             {isOpen ? (
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-white">
-                  AM
+                  {userInitials}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-white truncate">Admin</p>
-                  <p className="text-xs text-white/70 truncate">admin@careermentor.com</p>
+                  <p className="text-sm font-medium text-white truncate">{user?.name || "Admin"}</p>
+                  <p className="text-xs text-white/70 truncate">{user?.email || "admin@careermentor.com"}</p>
                 </div>
               </div>
             ) : (
               <div className="flex justify-center">
                 <div className="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-white text-xs">
-                  AM
+                  {userInitials}
                 </div>
               </div>
             )}
@@ -114,6 +132,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
               <Button 
                 variant="ghost" 
                 className="w-full mt-4 justify-start text-white/70 hover:text-white hover:bg-white/10"
+                onClick={handleLogout}
               >
                 <LogOut size={18} className="mr-2" />
                 Logout

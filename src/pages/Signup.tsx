@@ -4,11 +4,14 @@ import MainLayout from "@/components/layout/MainLayout";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { useUser } from "@/contexts/UserContext";
 
 const Signup = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
+  const { login } = useUser();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,22 +46,23 @@ const Signup = () => {
     setIsLoading(true);
     
     try {
-      // This would normally be an API call to create the user account
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
       // Send email notification to admin
       await sendEmailNotification(email, name);
       
-      toast({
-        title: "Account created",
-        description: "Please check your email to verify your account.",
-      });
+      // Auto-login the new user
+      const success = await login(email, password);
       
-      // Reset form
-      setName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
+      if (success) {
+        toast({
+          title: "Account created",
+          description: "Welcome to CareerMentor! Your account has been created successfully.",
+        });
+        
+        // Redirect to home
+        navigate("/");
+      } else {
+        throw new Error("Failed to log in after signup");
+      }
     } catch (error) {
       console.error("Error during signup:", error);
       toast({
