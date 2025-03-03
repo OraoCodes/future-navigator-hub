@@ -40,7 +40,7 @@ const Login = () => {
       } else {
         toast({
           title: "Login failed",
-          description: "Invalid email or password. For admin access, use admin@careermentor.com / admin123",
+          description: "Invalid email or password.",
           variant: "destructive",
         });
       }
@@ -106,15 +106,11 @@ const Login = () => {
               
               <Button 
                 type="submit" 
-                className="bg-navy text-white hover:bg-navy/90 w-full"
+                className="bg-archeoblue text-white hover:bg-archeoblue/90 w-full font-medium py-3 text-base rounded-md shadow-md"
                 disabled={isLoading}
               >
                 {isLoading ? "Logging in..." : "Log In"}
               </Button>
-              
-              <div className="text-xs text-gray-500 mt-2">
-                <p>For admin access (demo only): admin@careermentor.com / admin123</p>
-              </div>
             </form>
             
             <div className="mt-6 text-center">
