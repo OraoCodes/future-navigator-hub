@@ -313,7 +313,7 @@ const BookingPage = () => {
                         <div className="pt-4">
                           <Button 
                             type="button" 
-                            className="w-full bg-navy text-white"
+                            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                             onClick={nextStep}
                           >
                             Continue to Schedule
@@ -360,13 +360,14 @@ const BookingPage = () => {
                           <Button 
                             type="button" 
                             variant="outline"
+                            className="border-gray-300 text-gray-700 hover:bg-gray-50"
                             onClick={prevStep}
                           >
                             Back
                           </Button>
                           <Button 
                             type="button" 
-                            className="flex-1 bg-navy text-white"
+                            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
                             onClick={nextStep}
                           >
                             Continue to Payment
@@ -436,13 +437,14 @@ const BookingPage = () => {
                           <Button 
                             type="button" 
                             variant="outline"
+                            className="border-gray-300 text-gray-700 hover:bg-gray-50"
                             onClick={prevStep}
                           >
                             Back
                           </Button>
                           <Button 
                             type="submit" 
-                            className="flex-1 bg-navy text-white"
+                            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
                           >
                             Pay {serviceDetails.price} & Confirm
                           </Button>
