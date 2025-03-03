@@ -1,4 +1,3 @@
-
 import React from "react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -23,31 +22,48 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { Avatar } from "@/components/ui/avatar";
-import { Pencil, User } from "lucide-react";
+import { Pencil, User, Save, Calendar, Bell, Shield, Palette } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
 
 const SettingsPage = () => {
   return (
     <DashboardLayout>
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-navy">Settings</h1>
+          <h1 className="text-2xl font-bold text-accent1">Settings</h1>
           <p className="text-muted-foreground">
             Manage your account settings and preferences
           </p>
         </div>
 
         <Tabs defaultValue="profile">
-          <TabsList className="grid w-full md:w-auto grid-cols-3 md:grid-cols-4">
-            <TabsTrigger value="profile">Profile</TabsTrigger>
-            <TabsTrigger value="account">Account</TabsTrigger>
-            <TabsTrigger value="notifications">Notifications</TabsTrigger>
-            <TabsTrigger value="calendar">Calendar</TabsTrigger>
+          <TabsList className="grid w-full md:w-auto grid-cols-3 md:grid-cols-4 mb-4 bg-muted/50">
+            <TabsTrigger value="profile" className="flex items-center gap-2">
+              <User className="h-4 w-4" />
+              <span className="hidden md:inline">Profile</span>
+            </TabsTrigger>
+            <TabsTrigger value="account" className="flex items-center gap-2">
+              <Shield className="h-4 w-4" />
+              <span className="hidden md:inline">Account</span>
+            </TabsTrigger>
+            <TabsTrigger value="notifications" className="flex items-center gap-2">
+              <Bell className="h-4 w-4" />
+              <span className="hidden md:inline">Notifications</span>
+            </TabsTrigger>
+            <TabsTrigger value="calendar" className="flex items-center gap-2">
+              <Calendar className="h-4 w-4" />
+              <span className="hidden md:inline">Calendar</span>
+            </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="profile" className="space-y-6 mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Profile Information</CardTitle>
+          <TabsContent value="profile" className="space-y-6 mt-0">
+            <Card className="border-t-4 border-t-accent1">
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-2">
+                  <Badge className="bg-pastel-purple text-accent1 py-1">Profile</Badge>
+                </div>
+                <CardTitle className="mt-2">Profile Information</CardTitle>
                 <CardDescription>
                   Update your profile information visible to clients
                 </CardDescription>
@@ -55,15 +71,15 @@ const SettingsPage = () => {
               <CardContent className="space-y-6">
                 <div className="flex flex-col md:flex-row md:items-center gap-6">
                   <div className="relative">
-                    <Avatar className="h-24 w-24 border-2 border-white shadow-md">
-                      <div className="flex h-full items-center justify-center bg-muted text-lg">
+                    <Avatar className="h-24 w-24 border-2 border-white shadow-md bg-pastel-purple">
+                      <div className="flex h-full items-center justify-center text-lg text-accent1 font-semibold">
                         AM
                       </div>
                     </Avatar>
                     <Button
                       size="icon"
                       variant="secondary"
-                      className="absolute bottom-0 right-0 h-8 w-8 rounded-full shadow"
+                      className="absolute bottom-0 right-0 h-8 w-8 rounded-full shadow bg-accent1 text-white hover:bg-accent1/90"
                     >
                       <Pencil className="h-4 w-4" />
                     </Button>
@@ -74,10 +90,10 @@ const SettingsPage = () => {
                       Upload a professional photo for your profile
                     </p>
                     <div className="flex gap-2 mt-2">
-                      <Button variant="outline" size="sm">
+                      <Button variant="outline" size="sm" className="border-accent1 text-accent1">
                         Upload
                       </Button>
-                      <Button variant="ghost" size="sm">
+                      <Button variant="ghost" size="sm" className="text-accent1">
                         Remove
                       </Button>
                     </div>
@@ -89,7 +105,7 @@ const SettingsPage = () => {
                 <div className="grid gap-5">
                   <div className="grid gap-2.5">
                     <Label htmlFor="name">Full Name</Label>
-                    <Input id="name" value="Admin" />
+                    <Input id="name" value="Admin" className="border-accent1/20 focus-visible:ring-accent1" />
                   </div>
 
                   <div className="grid gap-2.5">
@@ -97,16 +113,17 @@ const SettingsPage = () => {
                     <Input
                       id="title"
                       placeholder="e.g. Career Coach & CV Specialist"
+                      className="border-accent1/20 focus-visible:ring-accent1"
                     />
                   </div>
 
                   <div className="grid gap-2.5">
                     <Label htmlFor="bio">Professional Bio</Label>
-                    <textarea
+                    <Textarea
                       id="bio"
-                      className="min-h-32 rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                      className="min-h-32 border-accent1/20 focus-visible:ring-accent1"
                       placeholder="Write a short professional bio highlighting your expertise and experience..."
-                    ></textarea>
+                    ></Textarea>
                   </div>
 
                   <div className="grid gap-2.5">
@@ -114,6 +131,7 @@ const SettingsPage = () => {
                     <Input
                       id="expertise"
                       placeholder="e.g. CV Writing, Career Transitions, Interview Preparation"
+                      className="border-accent1/20 focus-visible:ring-accent1"
                     />
                     <p className="text-sm text-muted-foreground">
                       Separate multiple areas with commas
@@ -123,13 +141,19 @@ const SettingsPage = () => {
               </CardContent>
               <CardFooter className="flex justify-end gap-2">
                 <Button variant="outline">Cancel</Button>
-                <Button>Save Changes</Button>
+                <Button className="bg-accent1 hover:bg-accent1/90">
+                  <Save className="h-4 w-4 mr-2" />
+                  Save Changes
+                </Button>
               </CardFooter>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Contact Information</CardTitle>
+            <Card className="border-t-4 border-t-accent2">
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-2">
+                  <Badge className="bg-pastel-green text-accent2 py-1">Contact</Badge>
+                </div>
+                <CardTitle className="mt-2">Contact Information</CardTitle>
                 <CardDescription>
                   Manage how clients can reach you
                 </CardDescription>
@@ -137,30 +161,51 @@ const SettingsPage = () => {
               <CardContent className="space-y-4">
                 <div className="grid gap-2.5">
                   <Label htmlFor="email">Email Address</Label>
-                  <Input id="email" type="email" value="admin@careermentor.com" />
+                  <Input 
+                    id="email" 
+                    type="email" 
+                    value="admin@careermentor.com" 
+                    className="border-accent2/20 focus-visible:ring-accent2" 
+                  />
                 </div>
 
                 <div className="grid gap-2.5">
                   <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" />
+                  <Input 
+                    id="phone" 
+                    type="tel" 
+                    placeholder="+1 (555) 000-0000" 
+                    className="border-accent2/20 focus-visible:ring-accent2" 
+                  />
                 </div>
 
                 <div className="grid gap-2.5">
                   <Label htmlFor="website">Website</Label>
-                  <Input id="website" type="url" placeholder="https://yourwebsite.com" />
+                  <Input 
+                    id="website" 
+                    type="url" 
+                    placeholder="https://yourwebsite.com" 
+                    className="border-accent2/20 focus-visible:ring-accent2" 
+                  />
                 </div>
               </CardContent>
               <CardFooter className="flex justify-end gap-2">
                 <Button variant="outline">Cancel</Button>
-                <Button>Save Changes</Button>
+                <Button className="bg-accent2 hover:bg-accent2/90">
+                  <Save className="h-4 w-4 mr-2" />
+                  Save Changes
+                </Button>
               </CardFooter>
             </Card>
           </TabsContent>
 
-          <TabsContent value="account" className="space-y-6 mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Account Settings</CardTitle>
+          <TabsContent value="account" className="space-y-6 mt-0">
+            <Card className="border-t-4 border-t-accent4">
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-2">
+                  <Badge className="bg-pastel-blue text-accent4 py-1">Security</Badge>
+                </div>
+                <CardTitle className="mt-2">Account Settings</CardTitle>
                 <CardDescription>
                   Update your account preferences and security settings
                 </CardDescription>
@@ -188,13 +233,16 @@ const SettingsPage = () => {
               </CardContent>
               <CardFooter className="flex justify-end gap-2">
                 <Button variant="outline">Cancel</Button>
-                <Button>Update Password</Button>
+                <Button className="bg-accent4 hover:bg-accent4/90">Update Password</Button>
               </CardFooter>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Timezone Settings</CardTitle>
+            <Card className="border-t-4 border-t-accent3">
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-2">
+                  <Badge className="bg-pastel-orange text-accent3 py-1">Region</Badge>
+                </div>
+                <CardTitle className="mt-2">Timezone Settings</CardTitle>
                 <CardDescription>
                   Set your timezone for accurate scheduling
                 </CardDescription>
@@ -219,13 +267,16 @@ const SettingsPage = () => {
               </CardContent>
               <CardFooter className="flex justify-end gap-2">
                 <Button variant="outline">Cancel</Button>
-                <Button>Save Changes</Button>
+                <Button className="bg-accent3 hover:bg-accent3/90">Save Changes</Button>
               </CardFooter>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Delete Account</CardTitle>
+            <Card className="border-t-4 border-t-red-500">
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-2">
+                  <Badge className="bg-pastel-pink text-red-500 py-1">Danger Zone</Badge>
+                </div>
+                <CardTitle className="mt-2">Delete Account</CardTitle>
                 <CardDescription>
                   Permanently delete your account and all associated data
                 </CardDescription>
@@ -242,10 +293,13 @@ const SettingsPage = () => {
             </Card>
           </TabsContent>
 
-          <TabsContent value="notifications" className="space-y-6 mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Email Notifications</CardTitle>
+          <TabsContent value="notifications" className="space-y-6 mt-0">
+            <Card className="border-t-4 border-t-accent5">
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-2">
+                  <Badge className="bg-pastel-pink text-accent5 py-1">Email</Badge>
+                </div>
+                <CardTitle className="mt-2">Email Notifications</CardTitle>
                 <CardDescription>
                   Manage which emails you receive from us
                 </CardDescription>
@@ -298,13 +352,16 @@ const SettingsPage = () => {
                 </div>
               </CardContent>
               <CardFooter className="flex justify-end">
-                <Button>Save Preferences</Button>
+                <Button className="bg-accent5 hover:bg-accent5/90">Save Preferences</Button>
               </CardFooter>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>In-App Notifications</CardTitle>
+            <Card className="border-t-4 border-t-accent1">
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-2">
+                  <Badge className="bg-pastel-purple text-accent1 py-1">In-App</Badge>
+                </div>
+                <CardTitle className="mt-2">In-App Notifications</CardTitle>
                 <CardDescription>
                   Manage your in-app notification preferences
                 </CardDescription>
@@ -345,15 +402,18 @@ const SettingsPage = () => {
                 </div>
               </CardContent>
               <CardFooter className="flex justify-end">
-                <Button>Save Preferences</Button>
+                <Button className="bg-accent1 hover:bg-accent1/90">Save Preferences</Button>
               </CardFooter>
             </Card>
           </TabsContent>
 
-          <TabsContent value="calendar" className="space-y-6 mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Calendar Settings</CardTitle>
+          <TabsContent value="calendar" className="space-y-6 mt-0">
+            <Card className="border-t-4 border-t-accent2">
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-2">
+                  <Badge className="bg-pastel-green text-accent2 py-1">Scheduling</Badge>
+                </div>
+                <CardTitle className="mt-2">Calendar Settings</CardTitle>
                 <CardDescription>
                   Configure your availability and booking settings
                 </CardDescription>
@@ -478,13 +538,16 @@ const SettingsPage = () => {
               </CardContent>
               <CardFooter className="flex justify-end gap-2">
                 <Button variant="outline">Cancel</Button>
-                <Button>Save Settings</Button>
+                <Button className="bg-accent2 hover:bg-accent2/90">Save Settings</Button>
               </CardFooter>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Calendar Integrations</CardTitle>
+            <Card className="border-t-4 border-t-accent4">
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-2">
+                  <Badge className="bg-pastel-blue text-accent4 py-1">Integrations</Badge>
+                </div>
+                <CardTitle className="mt-2">Calendar Integrations</CardTitle>
                 <CardDescription>
                   Connect your external calendars for seamless scheduling
                 </CardDescription>
@@ -499,7 +562,7 @@ const SettingsPage = () => {
                         viewBox="0 0 24 24"
                       >
                         <path d="M21.5 4h-19C1.673 4 1 4.673 1 5.5v15c0 .827.673 1.5 1.5 1.5h19c.827 0 1.5-.673 1.5-1.5v-15c0-.827-.673-1.5-1.5-1.5zm0 1.5v3h-19v-3h19zm-19 15v-10.5h19V20.5h-19z" />
-                        <path d="M8 17h10v1H8zm0-4h6v1H8z" />
+                        <path d="M6 8h12v1H6zm0 4h5v1H6zm0 4h9v1H6z" />
                       </svg>
                     </div>
                     <div>
