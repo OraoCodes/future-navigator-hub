@@ -20,6 +20,11 @@ import BookingPage from "./pages/booking/BookingPage";
 import ConfirmationPage from "./pages/booking/ConfirmationPage";
 import Dashboard from "./pages/admin/Dashboard";
 import CalendarView from "./pages/admin/CalendarView";
+import ClientsPage from "./pages/admin/ClientsPage";
+import PaymentsPage from "./pages/admin/PaymentsPage";
+import AnalyticsPage from "./pages/admin/AnalyticsPage";
+import NotificationsPage from "./pages/admin/NotificationsPage";
+import SettingsPage from "./pages/admin/SettingsPage";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +51,11 @@ const App = () => {
             <Route path="/booking/confirmation" element={<ConfirmationPage />} />
             <Route path="/admin" element={<Dashboard />} />
             <Route path="/admin/calendar" element={<CalendarView />} />
+            <Route path="/admin/clients" element={<ClientsPage />} />
+            <Route path="/admin/payments" element={<PaymentsPage />} />
+            <Route path="/admin/analytics" element={<AnalyticsPage />} />
+            <Route path="/admin/notifications" element={<NotificationsPage />} />
+            <Route path="/admin/settings" element={<SettingsPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
