@@ -26,7 +26,7 @@ const About = () => {
           <div className="prose prose-lg max-w-none">
             <h2>Who We Are</h2>
             <p>
-              CareerMentor was founded in 2021 by a team of tech industry veterans who saw a need for personalized career coaching
+              Archeohub was founded in 2021 by a team of tech industry veterans who saw a need for personalized career coaching
               specifically tailored to technology professionals. Our founders have decades of combined experience at companies like
               Google, Amazon, Microsoft, and numerous startups.
             </p>
