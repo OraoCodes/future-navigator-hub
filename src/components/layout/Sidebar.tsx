@@ -65,14 +65,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
         }`}
       >
         <div className="h-full flex flex-col overflow-hidden">
-          {/* Sidebar header with logo */}
+          {/* Sidebar header with logo - increased size by 2.24x */}
           <div className="flex items-center justify-between h-16 px-4 border-b border-white/10">
             {isOpen ? (
               <Link to="/admin" className="flex items-center gap-2">
                 <img 
                   src="/lovable-uploads/0110b91f-955b-45dd-bd4f-cb721f2cd6aa.png" 
                   alt="Archeohub Logo" 
-                  className="h-16" 
+                  className="h-36 w-auto" 
                 />
               </Link>
             ) : (
@@ -80,7 +80,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
                 <img 
                   src="/lovable-uploads/0110b91f-955b-45dd-bd4f-cb721f2cd6aa.png" 
                   alt="Archeohub Logo" 
-                  className="h-16 w-16 object-contain" 
+                  className="h-36 w-36 object-contain" 
                 />
               </div>
             )}

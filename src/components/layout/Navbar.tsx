@@ -43,12 +43,12 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo with increased size by 2.24 times */}
           <Link to="/" className="flex items-center gap-2 overflow-hidden max-w-[180px] md:max-w-none">
             <img 
               src="/lovable-uploads/0110b91f-955b-45dd-bd4f-cb721f2cd6aa.png" 
               alt="Archeohub Logo" 
-              className="h-20 w-auto object-contain mix-blend-multiply" 
+              className="h-44 w-auto object-contain mix-blend-multiply" 
             />
           </Link>
 
