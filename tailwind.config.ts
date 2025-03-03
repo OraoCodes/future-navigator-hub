@@ -53,9 +53,10 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Platform custom colors
-				navy: "#002366",
-				gold: "#FFD700",
+				// Archeohub custom colors
+				archeoblue: "#3E52A2",
+				archeogreen: "#30B57E",
+				archeoyellow: "#EAB62E",
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

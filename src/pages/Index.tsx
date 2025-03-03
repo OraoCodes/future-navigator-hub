@@ -26,7 +26,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-4xl md:text-6xl font-bold text-navy leading-tight mb-6"
+                className="text-4xl md:text-6xl font-bold text-archeoblue leading-tight mb-6"
               >
                 Elevate Your Tech Career to New Heights
               </motion.h1>
@@ -67,8 +67,8 @@ const Index = () => {
                 transition={{ duration: 0.6 }}
                 className="relative w-full aspect-square max-w-md mx-auto"
               >
-                <div className="absolute inset-0 bg-navy/5 rounded-full animate-pulse"></div>
-                <div className="absolute inset-3 bg-navy/10 rounded-full"></div>
+                <div className="absolute inset-0 bg-archeoblue/5 rounded-full animate-pulse"></div>
+                <div className="absolute inset-3 bg-archeoblue/10 rounded-full"></div>
                 <div className="absolute inset-6 bg-white rounded-full shadow-xl flex items-center justify-center">
                   <img 
                     src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" 
@@ -91,9 +91,9 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="text-center p-8 bg-navy/5 rounded-xl"
+              className="text-center p-8 bg-archeoblue/5 rounded-xl"
             >
-              <h3 className="text-4xl font-bold text-navy mb-2">95%</h3>
+              <h3 className="text-4xl font-bold text-archeoblue mb-2">95%</h3>
               <p className="text-gray-600">Success rate for career transitions</p>
             </motion.div>
             
@@ -102,9 +102,9 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
-              className="text-center p-8 bg-navy/5 rounded-xl"
+              className="text-center p-8 bg-archeoblue/5 rounded-xl"
             >
-              <h3 className="text-4xl font-bold text-navy mb-2">500+</h3>
+              <h3 className="text-4xl font-bold text-archeoblue mb-2">500+</h3>
               <p className="text-gray-600">Tech professionals coached</p>
             </motion.div>
             
@@ -113,9 +113,9 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-center p-8 bg-navy/5 rounded-xl"
+              className="text-center p-8 bg-archeoblue/5 rounded-xl"
             >
-              <h3 className="text-4xl font-bold text-navy mb-2">30%</h3>
+              <h3 className="text-4xl font-bold text-archeoblue mb-2">30%</h3>
               <p className="text-gray-600">Average salary increase</p>
             </motion.div>
           </div>
@@ -126,7 +126,7 @@ const Index = () => {
       <section className="py-20 px-4 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-navy mb-4">Our Services</h2>
+            <h2 className="text-3xl font-bold text-archeoblue mb-4">Our Services</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Tailored solutions to help you achieve your career goals in the tech industry.
             </p>
@@ -141,13 +141,13 @@ const Index = () => {
               viewport={{ once: true }}
               className="service-card"
             >
-              <div className="mb-4 w-12 h-12 rounded-lg bg-navy/5 flex items-center justify-center text-navy">
+              <div className="mb-4 w-12 h-12 rounded-lg bg-archeoblue/5 flex items-center justify-center text-archeoblue">
                 <FileText size={24} />
               </div>
-              <h3 className="text-xl font-semibold text-navy mb-2">CV Review</h3>
+              <h3 className="text-xl font-semibold text-archeoblue mb-2">CV Review</h3>
               <p className="text-gray-600 mb-4">Expert feedback on your CV to highlight your strengths and stand out to recruiters.</p>
-              <p className="font-semibold text-navy mb-6">Starting at $99</p>
-              <Link to="/services" className="text-navy font-medium flex items-center hover:text-navy/80 transition-colors">
+              <p className="font-semibold text-archeoblue mb-6">Starting at $99</p>
+              <Link to="/services" className="text-archeoblue font-medium flex items-center hover:text-archeoblue/80 transition-colors">
                 Learn more <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </motion.div>
@@ -160,13 +160,13 @@ const Index = () => {
               viewport={{ once: true }}
               className="service-card"
             >
-              <div className="mb-4 w-12 h-12 rounded-lg bg-navy/5 flex items-center justify-center text-navy">
+              <div className="mb-4 w-12 h-12 rounded-lg bg-archeoblue/5 flex items-center justify-center text-archeoblue">
                 <Users size={24} />
               </div>
-              <h3 className="text-xl font-semibold text-navy mb-2">Career Coaching</h3>
+              <h3 className="text-xl font-semibold text-archeoblue mb-2">Career Coaching</h3>
               <p className="text-gray-600 mb-4">Strategic guidance to help you navigate your career path and achieve your goals.</p>
-              <p className="font-semibold text-navy mb-6">Starting at $149</p>
-              <Link to="/services" className="text-navy font-medium flex items-center hover:text-navy/80 transition-colors">
+              <p className="font-semibold text-archeoblue mb-6">Starting at $149</p>
+              <Link to="/services" className="text-archeoblue font-medium flex items-center hover:text-archeoblue/80 transition-colors">
                 Learn more <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </motion.div>
@@ -179,13 +179,13 @@ const Index = () => {
               viewport={{ once: true }}
               className="service-card"
             >
-              <div className="mb-4 w-12 h-12 rounded-lg bg-navy/5 flex items-center justify-center text-navy">
+              <div className="mb-4 w-12 h-12 rounded-lg bg-archeoblue/5 flex items-center justify-center text-archeoblue">
                 <Mic size={24} />
               </div>
-              <h3 className="text-xl font-semibold text-navy mb-2">Mock Interviews</h3>
+              <h3 className="text-xl font-semibold text-archeoblue mb-2">Mock Interviews</h3>
               <p className="text-gray-600 mb-4">Practice with realistic technical interviews and receive detailed feedback.</p>
-              <p className="font-semibold text-navy mb-6">Starting at $129</p>
-              <Link to="/services" className="text-navy font-medium flex items-center hover:text-navy/80 transition-colors">
+              <p className="font-semibold text-archeoblue mb-6">Starting at $129</p>
+              <Link to="/services" className="text-archeoblue font-medium flex items-center hover:text-archeoblue/80 transition-colors">
                 Learn more <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </motion.div>
@@ -197,7 +197,7 @@ const Index = () => {
       <section className="py-20 px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-navy mb-4">Success Stories</h2>
+            <h2 className="text-3xl font-bold text-archeoblue mb-4">Success Stories</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Hear from tech professionals who transformed their careers with our coaching.
             </p>
@@ -212,7 +212,7 @@ const Index = () => {
               className="bg-gray-50 p-8 rounded-xl shadow-sm"
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-navy/10 rounded-full"></div>
+                <div className="w-12 h-12 bg-archeoblue/10 rounded-full"></div>
                 <div>
                   <h4 className="font-semibold">Sarah Johnson</h4>
                   <p className="text-sm text-gray-500">Software Engineer at Google</p>
@@ -232,7 +232,7 @@ const Index = () => {
               className="bg-gray-50 p-8 rounded-xl shadow-sm"
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-navy/10 rounded-full"></div>
+                <div className="w-12 h-12 bg-archeoblue/10 rounded-full"></div>
                 <div>
                   <h4 className="font-semibold">Michael Chen</h4>
                   <p className="text-sm text-gray-500">Product Manager at Microsoft</p>
@@ -248,7 +248,7 @@ const Index = () => {
       </section>
       
       {/* Call to Action */}
-      <section className="py-20 px-4 bg-navy text-white">
+      <section className="py-20 px-4 bg-archeoblue text-white">
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="max-w-2xl">
@@ -258,7 +258,7 @@ const Index = () => {
               </p>
             </div>
             <Link to="/services">
-              <Button className="bg-gold text-navy hover:bg-gold/90 premium-button">
+              <Button className="bg-archeoyellow text-archeoblue hover:bg-archeoyellow/90 premium-button">
                 Book Your Session
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
