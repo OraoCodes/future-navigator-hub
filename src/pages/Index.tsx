@@ -10,61 +10,122 @@ const Index = () => {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="py-20 md:py-28 px-4">
+      <section className="py-24 md:py-32 px-4 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="flex-1 text-left">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <span className="gold-accent mb-4 inline-block">Premium Tech Career Coaching</span>
+              </motion.div>
+              
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-4xl md:text-6xl font-bold text-navy leading-tight mb-6"
+              >
+                Elevate Your Tech Career to New Heights
+              </motion.h1>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-xl text-gray-600 mb-10"
+              >
+                Expert guidance for tech professionals seeking to advance their careers through personalized coaching, CV reviews, and interview preparation.
+              </motion.p>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <Link to="/services">
+                  <Button className="primary-button w-full sm:w-auto">
+                    Book a Session
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link to="/about">
+                  <Button className="secondary-button w-full sm:w-auto">
+                    Learn More
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
+            
+            <div className="flex-1">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+                className="relative w-full aspect-square max-w-md mx-auto"
+              >
+                <div className="absolute inset-0 bg-navy/5 rounded-full animate-pulse"></div>
+                <div className="absolute inset-3 bg-navy/10 rounded-full"></div>
+                <div className="absolute inset-6 bg-white rounded-full shadow-xl flex items-center justify-center">
+                  <img 
+                    src="/placeholder.svg" 
+                    alt="Career Coaching" 
+                    className="w-2/3 h-2/3 object-contain"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 px-4 bg-white">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-center p-8 bg-navy/5 rounded-xl"
             >
-              <span className="gold-accent mb-4 inline-block">Premium Tech Career Coaching</span>
+              <h3 className="text-4xl font-bold text-navy mb-2">95%</h3>
+              <p className="text-gray-600">Success rate for career transitions</p>
             </motion.div>
             
-            <motion.h1
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-4xl md:text-6xl font-bold text-navy tracking-tight mb-6"
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-center p-8 bg-navy/5 rounded-xl"
             >
-              Elevate Your Tech Career <br className="hidden md:block" /> to New Heights
-            </motion.h1>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-xl text-gray-600 max-w-3xl mx-auto mb-10"
-            >
-              Expert guidance for tech professionals seeking to advance their careers through personalized coaching, CV reviews, and interview preparation.
-            </motion.p>
+              <h3 className="text-4xl font-bold text-navy mb-2">500+</h3>
+              <p className="text-gray-600">Tech professionals coached</p>
+            </motion.div>
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-center p-8 bg-navy/5 rounded-xl"
             >
-              <Link to="/services">
-                <Button className="primary-button animate-float">
-                  Book a Session
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <Link to="/about">
-                <Button className="secondary-button">
-                  Learn More
-                </Button>
-              </Link>
+              <h3 className="text-4xl font-bold text-navy mb-2">30%</h3>
+              <p className="text-gray-600">Average salary increase</p>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Services Preview */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-navy mb-4">Our Services</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Tailored solutions to help you achieve your career goals in the tech industry.
@@ -127,6 +188,60 @@ const Index = () => {
               <Link to="/services" className="text-navy font-medium flex items-center hover:text-navy/80 transition-colors">
                 Learn more <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Testimonials Section */}
+      <section className="py-20 px-4 bg-white">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-navy mb-4">Success Stories</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Hear from tech professionals who transformed their careers with our coaching.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="bg-gray-50 p-8 rounded-xl shadow-sm"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 bg-navy/10 rounded-full"></div>
+                <div>
+                  <h4 className="font-semibold">Sarah Johnson</h4>
+                  <p className="text-sm text-gray-500">Software Engineer at Google</p>
+                </div>
+              </div>
+              <p className="text-gray-600">
+                "The mock interviews and career coaching were invaluable in helping me land my dream job. 
+                I gained confidence and improved my technical communication skills significantly."
+              </p>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="bg-gray-50 p-8 rounded-xl shadow-sm"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 bg-navy/10 rounded-full"></div>
+                <div>
+                  <h4 className="font-semibold">Michael Chen</h4>
+                  <p className="text-sm text-gray-500">Product Manager at Microsoft</p>
+                </div>
+              </div>
+              <p className="text-gray-600">
+                "The CV review service transformed my resume from good to exceptional. 
+                I started getting calls from recruiters within days of making the recommended changes."
+              </p>
             </motion.div>
           </div>
         </div>
