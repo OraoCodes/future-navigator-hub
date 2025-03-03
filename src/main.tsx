@@ -4,7 +4,11 @@ import App from './App.tsx'
 import './index.css'
 import { ThemeProvider } from './components/ThemeProvider.tsx'
 
-createRoot(document.getElementById("root")!).render(
+// Make sure we're targeting the correct root element
+const rootElement = document.getElementById("root");
+if (!rootElement) throw new Error("Root element not found");
+
+createRoot(rootElement).render(
   <ThemeProvider defaultTheme="light">
     <App />
   </ThemeProvider>
