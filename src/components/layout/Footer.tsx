@@ -4,62 +4,54 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-white border-t py-8">
-      <div className="container mx-auto px-8">
+    <footer className="bg-gray-50 border-t">
+      <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="flex items-center gap-2">
-              <div className="flex items-center">
-                <div className="bg-black h-8 w-8 rounded-md flex items-center justify-center mr-2">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 6L17 6M17 6L14 6M17 6V9M17 6V3M9.5 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9.5M9.5 21C10.0304 21 10.5391 20.7893 10.9142 20.4142C11.2893 20.0391 11.5 19.5304 11.5 19V5C11.5 4.46957 11.2893 3.96086 10.9142 3.58579C10.5391 3.21071 10.0304 3 9.5 3M9.5 21H14.5M9.5 3H14.5M14.5 21C15.0304 21 15.5391 20.7893 15.9142 20.4142C16.2893 20.0391 16.5 19.5304 16.5 19V12M14.5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V12" 
-                    stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <span className="text-black font-bold text-xl">Teamway</span>
-              </div>
+              <span className="text-navy font-bold text-xl">CareerMentor</span>
             </Link>
             <p className="mt-4 text-gray-600 text-sm">
-              Building talented remote teams for companies worldwide.
+              Premium tech career coaching for professionals seeking to advance their careers.
             </p>
           </div>
           
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Services</h3>
+            <h3 className="font-semibold text-navy mb-4">Services</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/services" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  Hire Remote Talent
+                <Link to="/services" className="text-gray-600 hover:text-navy transition-colors">
+                  CV Review
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  For Developers
+                <Link to="/services" className="text-gray-600 hover:text-navy transition-colors">
+                  Career Coaching
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  For Companies
+                <Link to="/services" className="text-gray-600 hover:text-navy transition-colors">
+                  Mock Interviews
                 </Link>
               </li>
             </ul>
           </div>
           
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Company</h3>
+            <h3 className="font-semibold text-navy mb-4">Company</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/about" className="text-gray-600 hover:text-gray-900 transition-colors">
+                <Link to="/about" className="text-gray-600 hover:text-navy transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-600 hover:text-gray-900 transition-colors">
+                <Link to="/contact" className="text-gray-600 hover:text-navy transition-colors">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="text-gray-600 hover:text-gray-900 transition-colors">
+                <Link to="/blog" className="text-gray-600 hover:text-navy transition-colors">
                   Blog
                 </Link>
               </li>
@@ -67,20 +59,20 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Legal</h3>
+            <h3 className="font-semibold text-navy mb-4">Legal</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/privacy" className="text-gray-600 hover:text-gray-900 transition-colors">
+                <Link to="/privacy" className="text-gray-600 hover:text-navy transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-gray-600 hover:text-gray-900 transition-colors">
+                <Link to="/terms" className="text-gray-600 hover:text-navy transition-colors">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link to="/cookies" className="text-gray-600 hover:text-gray-900 transition-colors">
+                <Link to="/cookies" className="text-gray-600 hover:text-navy transition-colors">
                   Cookie Policy
                 </Link>
               </li>
@@ -88,8 +80,22 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="mt-8 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Teamway. All rights reserved.</p>
+        <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+          <p>&copy; {new Date().getFullYear()} CareerMentor. All rights reserved.</p>
+          <div className="mt-4 md:mt-0 flex space-x-6">
+            <a href="#" className="text-gray-500 hover:text-navy">
+              <span className="sr-only">LinkedIn</span>
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 0h-14c-2.8 0-5 2.2-5 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5v-14c0-2.8-2.2-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.3c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zm12.5 12.3h-3v-5.6c0-3.4-4-3.1-4 0v5.6h-3v-11h3v1.7c1.4-2.6 7-2.8 7 2.5v6.8z"/>
+              </svg>
+            </a>
+            <a href="#" className="text-gray-500 hover:text-navy">
+              <span className="sr-only">Twitter</span>
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </footer>
