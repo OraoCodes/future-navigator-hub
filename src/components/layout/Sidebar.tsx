@@ -72,7 +72,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
                 <img 
                   src="/lovable-uploads/0110b91f-955b-45dd-bd4f-cb721f2cd6aa.png" 
                   alt="Archeohub Logo" 
-                  className="h-24" 
+                  className="h-16" 
                 />
               </Link>
             ) : (
@@ -80,7 +80,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
                 <img 
                   src="/lovable-uploads/0110b91f-955b-45dd-bd4f-cb721f2cd6aa.png" 
                   alt="Archeohub Logo" 
-                  className="h-24 w-24 object-contain" 
+                  className="h-16 w-16 object-contain" 
                 />
               </div>
             )}

@@ -30,7 +30,7 @@ const Services = () => {
               <img 
                 src="/lovable-uploads/0110b91f-955b-45dd-bd4f-cb721f2cd6aa.png" 
                 alt="Archeohub Logo" 
-                className="h-48 mx-auto" 
+                className="h-32 mx-auto" 
               />
             </motion.div>
             
