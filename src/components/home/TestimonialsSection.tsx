@@ -1,6 +1,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const TestimonialsSection = () => {
   return (
@@ -22,10 +23,13 @@ const TestimonialsSection = () => {
             className="bg-gray-50 p-8 rounded-xl shadow-sm"
           >
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 bg-archeoblue/10 rounded-full"></div>
+              <Avatar className="h-12 w-12 border-2 border-archeoblue/10">
+                <AvatarImage src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-1.2.1&auto=format&fit=crop&w=120&h=120&q=80" alt="Billy Owuor" />
+                <AvatarFallback className="bg-archeoblue/10">BO</AvatarFallback>
+              </Avatar>
               <div>
-                <h4 className="font-semibold">Sarah Johnson</h4>
-                <p className="text-sm text-gray-500">Software Engineer at Google</p>
+                <h4 className="font-semibold">Billy Owuor</h4>
+                <p className="text-sm text-gray-500">Software Engineer at Calcare</p>
               </div>
             </div>
             <p className="text-gray-600">
@@ -42,10 +46,13 @@ const TestimonialsSection = () => {
             className="bg-gray-50 p-8 rounded-xl shadow-sm"
           >
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 bg-archeoblue/10 rounded-full"></div>
+              <Avatar className="h-12 w-12 border-2 border-archeoblue/10">
+                <AvatarImage src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=120&h=120&q=80" alt="Anne Kimani" />
+                <AvatarFallback className="bg-archeoblue/10">AK</AvatarFallback>
+              </Avatar>
               <div>
-                <h4 className="font-semibold">Michael Chen</h4>
-                <p className="text-sm text-gray-500">Product Manager at Microsoft</p>
+                <h4 className="font-semibold">Anne Kimani</h4>
+                <p className="text-sm text-gray-500">Product Manager at iCapital</p>
               </div>
             </div>
             <p className="text-gray-600">
