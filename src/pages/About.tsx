@@ -26,7 +26,7 @@ const About = () => {
           <div className="prose prose-lg max-w-none">
             <h2>Who We Are</h2>
             <p>
-              Archeohub was founded in 2021 by a team of archaeology and technology experts who saw a need for specialized digital tools
+              Our platform was founded in 2021 by a team of archaeology and technology experts who saw a need for specialized digital tools
               specifically tailored to archaeology professionals. Our founders have decades of combined experience in archaeological research,
               field operations, and cutting-edge technology development.
             </p>

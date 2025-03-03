@@ -46,11 +46,11 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <img 
-              src="/archeohub-logo.png" 
-              alt="Archeohub Logo" 
+              src="/logo.png" 
+              alt="Platform Logo" 
               className="h-8 w-auto"
             />
-            <span className="text-archeoblue font-bold text-xl">Archeohub</span>
+            <span className="text-archeoblue font-bold text-xl">Archaeological Platform</span>
           </Link>
 
           {/* Desktop Navigation */}

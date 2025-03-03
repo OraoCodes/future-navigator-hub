@@ -10,11 +10,11 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="flex items-center gap-2">
               <img 
-                src="/archeohub-logo.png" 
-                alt="Archeohub Logo" 
+                src="/logo.png" 
+                alt="Platform Logo" 
                 className="h-8 w-auto"
               />
-              <span className="text-archeoblue font-bold text-xl">Archeohub</span>
+              <span className="text-archeoblue font-bold text-xl">Archaeological Platform</span>
             </Link>
             <p className="mt-4 text-gray-600 text-sm">
               Premium archaeological research platform for professionals seeking to advance their discoveries.
@@ -86,7 +86,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Archeohub. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Archaeological Platform. All rights reserved.</p>
           <div className="mt-4 md:mt-0 flex space-x-6">
             <a href="#" className="text-gray-500 hover:text-archeoblue">
               <span className="sr-only">LinkedIn</span>
