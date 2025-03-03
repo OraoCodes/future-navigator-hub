@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -9,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="flex items-center gap-2">
-              <span className="text-navy font-bold text-xl">CareerMentor</span>
+              <span className="text-navy font-bold text-xl">Archeohub</span>
             </Link>
             <p className="mt-4 text-gray-600 text-sm">
               Premium tech career coaching for professionals seeking to advance their careers.
@@ -81,7 +80,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} CareerMentor. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Archeohub. All rights reserved.</p>
           <div className="mt-4 md:mt-0 flex space-x-6">
             <a href="#" className="text-gray-500 hover:text-navy">
               <span className="sr-only">LinkedIn</span>
