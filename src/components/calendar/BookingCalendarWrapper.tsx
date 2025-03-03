@@ -7,7 +7,24 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 // Initialize the localizer
 const localizer = momentLocalizer(moment);
 
-const BookingCalendarWrapper = ({ events, onSelectSlot, onSelectEvent }) => {
+interface Event {
+  id: string;
+  title: string;
+  start: Date;
+  end: Date;
+}
+
+interface BookingCalendarWrapperProps {
+  events: Event[];
+  onSelectSlot: (slotInfo: any) => void;
+  onSelectEvent: (event: Event) => void;
+}
+
+const BookingCalendarWrapper: React.FC<BookingCalendarWrapperProps> = ({ 
+  events, 
+  onSelectSlot, 
+  onSelectEvent 
+}) => {
   return (
     <div className="h-[600px] w-full">
       <Calendar
