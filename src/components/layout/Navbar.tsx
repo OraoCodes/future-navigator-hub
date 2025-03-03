@@ -48,7 +48,7 @@ const Navbar = () => {
             <img 
               src="/lovable-uploads/0110b91f-955b-45dd-bd4f-cb721f2cd6aa.png" 
               alt="Archeohub Logo" 
-              className="h-10 w-auto object-contain mix-blend-multiply" 
+              className="h-30 w-auto object-contain mix-blend-multiply" 
             />
           </Link>
 
