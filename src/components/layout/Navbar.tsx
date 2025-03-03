@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Navbar = () => {
@@ -21,9 +21,10 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "How We Help", path: "/services", hasDropdown: true },
-    { name: "Our Offerings", path: "/services", hasDropdown: true },
-    { name: "Pricing", path: "/services", hasDropdown: false },
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
   ];
 
   const toggleMenu = () => {
@@ -37,11 +38,11 @@ const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-sm" : "bg-white"
+        scrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <span className="text-navy font-bold text-xl">CareerMentor</span>
@@ -54,14 +55,13 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`text-sm font-medium transition-colors hover:text-navy flex items-center gap-1 ${
+                  className={`text-sm font-medium transition-colors hover:text-navy relative ${
                     location.pathname === link.path
-                      ? "text-navy"
+                      ? "text-navy after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-gold"
                       : "text-gray-600 hover:text-navy"
                   }`}
                 >
                   {link.name}
-                  {link.hasDropdown && <ChevronDown className="h-4 w-4" />}
                 </Link>
               ))}
             </nav>
@@ -70,13 +70,13 @@ const Navbar = () => {
           {/* Call-to-action buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <Link to="/login">
-              <span className="text-gray-700 hover:text-navy font-medium text-sm">
+              <Button variant="outline" className="border-navy text-navy hover:bg-navy/5">
                 Log in
-              </span>
+              </Button>
             </Link>
             <Link to="/services">
-              <Button className="bg-black text-white hover:bg-black/90 rounded-full px-6">
-                Sign up
+              <Button className="bg-navy text-white hover:bg-navy/90">
+                Book a Session
               </Button>
             </Link>
           </div>

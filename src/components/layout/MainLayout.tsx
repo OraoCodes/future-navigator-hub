@@ -10,10 +10,10 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen">
       <Navbar />
       
-      <main className="flex-1">
+      <main className="flex-1 pt-16">
         <div className="animate-fade-in">
           {children || <Outlet />}
         </div>
