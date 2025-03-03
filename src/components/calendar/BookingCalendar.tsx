@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
-import { format, parse, startOfWeek, getDay } from 'date-fns';
+import { format, parse, startOfWeek, getDay, enUS } from 'date-fns';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import BookingDetails from './BookingDetails';
 import { Booking, BookingStatus } from '@/types/booking';
@@ -62,8 +62,9 @@ const sampleBookings: Booking[] = [
   },
 ];
 
+// Instead of using require, use direct import
 const locales = {
-  'en-US': require('date-fns/locale/en-US'),
+  'en-US': enUS,
 };
 
 const localizer = dateFnsLocalizer({
