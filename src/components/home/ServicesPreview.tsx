@@ -29,7 +29,7 @@ const ServicesPreview = () => {
             </div>
             <h3 className="text-xl font-semibold text-archeoblue mb-2">CV Review</h3>
             <p className="text-gray-600 mb-4">Expert feedback on your CV to highlight your strengths and stand out to recruiters.</p>
-            <p className="font-semibold text-archeoblue mb-6">Starting at $99</p>
+            <p className="font-semibold text-archeoblue mb-6">Starting at KES 2,500</p>
             <Link to="/services" className="text-archeoblue font-medium flex items-center hover:text-archeoblue/80 transition-colors">
               Learn more <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
@@ -48,7 +48,7 @@ const ServicesPreview = () => {
             </div>
             <h3 className="text-xl font-semibold text-archeoblue mb-2">Career Coaching</h3>
             <p className="text-gray-600 mb-4">Strategic guidance to help you navigate your career path and achieve your goals.</p>
-            <p className="font-semibold text-archeoblue mb-6">Starting at $149</p>
+            <p className="font-semibold text-archeoblue mb-6">Starting at KES 3,000</p>
             <Link to="/services" className="text-archeoblue font-medium flex items-center hover:text-archeoblue/80 transition-colors">
               Learn more <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
@@ -67,7 +67,7 @@ const ServicesPreview = () => {
             </div>
             <h3 className="text-xl font-semibold text-archeoblue mb-2">Mock Interviews</h3>
             <p className="text-gray-600 mb-4">Practice with realistic technical interviews and receive detailed feedback.</p>
-            <p className="font-semibold text-archeoblue mb-6">Starting at $129</p>
+            <p className="font-semibold text-archeoblue mb-6">Starting at KES 5,000</p>
             <Link to="/services" className="text-archeoblue font-medium flex items-center hover:text-archeoblue/80 transition-colors">
               Learn more <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
