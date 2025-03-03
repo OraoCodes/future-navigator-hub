@@ -13,6 +13,9 @@ import Login from "./pages/Login";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Cookies from "./pages/Cookies";
+import Blog from "./pages/Blog";
+import BookingPage from "./pages/booking/BookingPage";
+import ConfirmationPage from "./pages/booking/ConfirmationPage";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +34,9 @@ const App = () => (
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/cookies" element={<Cookies />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/booking/:serviceId" element={<BookingPage />} />
+          <Route path="/booking/confirmation" element={<ConfirmationPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
