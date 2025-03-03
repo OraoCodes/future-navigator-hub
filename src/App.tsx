@@ -18,6 +18,8 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import BookingPage from "./pages/booking/BookingPage";
 import ConfirmationPage from "./pages/booking/ConfirmationPage";
+import Dashboard from "./pages/admin/Dashboard";
+import CalendarView from "./pages/admin/CalendarView";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +43,8 @@ const App = () => (
           <Route path="/blog/:postId" element={<BlogPost />} />
           <Route path="/booking/:serviceId" element={<BookingPage />} />
           <Route path="/booking/confirmation" element={<ConfirmationPage />} />
+          <Route path="/admin" element={<Dashboard />} />
+          <Route path="/admin/calendar" element={<CalendarView />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
