@@ -79,7 +79,7 @@ const Navbar = () => {
               </Button>
             </Link>
             <Link to="/services">
-              <Button className="bg-navy text-white hover:bg-navy/90">
+              <Button className="bg-blue-600 text-white hover:bg-blue-700">
                 Book a Session
               </Button>
             </Link>
@@ -125,7 +125,7 @@ const Navbar = () => {
                   </Button>
                 </Link>
                 <Link to="/services" onClick={closeMenu}>
-                  <Button className="w-full bg-navy text-white">
+                  <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">
                     Book a Session
                   </Button>
                 </Link>
