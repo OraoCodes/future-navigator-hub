@@ -46,9 +46,9 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 overflow-hidden max-w-[180px] md:max-w-none">
             <img 
-              src="/lovable-uploads/d79c5030-b4c4-4cf5-bf4d-b2eae7ae7111.png" 
+              src="/lovable-uploads/0110b91f-955b-45dd-bd4f-cb721f2cd6aa.png" 
               alt="Archeohub Logo" 
-              className="h-32 w-auto object-contain mix-blend-multiply" 
+              className="h-10 w-auto object-contain mix-blend-multiply" 
             />
           </Link>
 

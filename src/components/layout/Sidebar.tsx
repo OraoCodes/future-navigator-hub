@@ -70,7 +70,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
             {isOpen ? (
               <Link to="/admin" className="flex items-center gap-2">
                 <img 
-                  src="/lovable-uploads/d79c5030-b4c4-4cf5-bf4d-b2eae7ae7111.png" 
+                  src="/lovable-uploads/0110b91f-955b-45dd-bd4f-cb721f2cd6aa.png" 
                   alt="Archeohub Logo" 
                   className="h-8" 
                 />
@@ -78,7 +78,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
             ) : (
               <div className="hidden md:block mx-auto">
                 <img 
-                  src="/lovable-uploads/d79c5030-b4c4-4cf5-bf4d-b2eae7ae7111.png" 
+                  src="/lovable-uploads/0110b91f-955b-45dd-bd4f-cb721f2cd6aa.png" 
                   alt="Archeohub Logo" 
                   className="h-8 w-8 object-contain" 
                 />
