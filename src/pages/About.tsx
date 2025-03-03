@@ -70,7 +70,7 @@ const About = () => {
               >
                 <h2 className="text-2xl md:text-3xl font-bold text-archeoblue">Who We Are</h2>
                 <p className="text-gray-600">
-                  Archeohub was founded in 2021 by a team of tech industry veterans who saw a need for personalized career coaching
+                  Archeohub was founded in 2024 by senior tech talent specialists who saw a need for personalized career coaching
                   specifically tailored to technology professionals. Our founders have decades of combined experience at companies like
                   Google, Amazon, Microsoft, and numerous startups.
                 </p>
