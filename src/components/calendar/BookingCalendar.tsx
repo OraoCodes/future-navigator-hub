@@ -1,19 +1,25 @@
 
 import React, { useState } from 'react';
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
-import { format, parse, startOfWeek, getDay } from 'date-fns';
+import { format, parse, startOfWeek, getDay, addDays } from 'date-fns';
 import { enUS } from 'date-fns/locale';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import BookingDetails from './BookingDetails';
 import { Booking, BookingStatus } from '@/types/booking';
 
-// Sample data
+// Get current date
+const today = new Date();
+const currentYear = today.getFullYear();
+const currentMonth = today.getMonth();
+const currentDay = today.getDate();
+
+// Sample data with current dates
 const sampleBookings: Booking[] = [
   {
     id: '1',
     title: 'CV Review with John Doe',
-    start: new Date(2023, 5, 15, 10, 0),
-    end: new Date(2023, 5, 15, 10, 45),
+    start: addDays(new Date(currentYear, currentMonth, currentDay), 1),
+    end: addDays(new Date(currentYear, currentMonth, currentDay, 10, 45), 1),
     clientName: 'John Doe',
     clientEmail: 'john.doe@example.com',
     serviceType: 'CV Review',
@@ -25,8 +31,8 @@ const sampleBookings: Booking[] = [
   {
     id: '2',
     title: 'Career Coaching with Alice Smith',
-    start: new Date(2023, 5, 16, 14, 0),
-    end: new Date(2023, 5, 16, 15, 0),
+    start: addDays(new Date(currentYear, currentMonth, currentDay, 14, 0), 2),
+    end: addDays(new Date(currentYear, currentMonth, currentDay, 15, 0), 2),
     clientName: 'Alice Smith',
     clientEmail: 'alice.smith@example.com',
     serviceType: 'Career Coaching',
@@ -38,8 +44,8 @@ const sampleBookings: Booking[] = [
   {
     id: '3',
     title: 'Mock Interview with Bob Johnson',
-    start: new Date(2023, 5, 14, 11, 0),
-    end: new Date(2023, 5, 14, 12, 0),
+    start: new Date(currentYear, currentMonth, currentDay, 11, 0),
+    end: new Date(currentYear, currentMonth, currentDay, 12, 0),
     clientName: 'Bob Johnson',
     clientEmail: 'bob.johnson@example.com',
     serviceType: 'Mock Interview',
@@ -51,8 +57,8 @@ const sampleBookings: Booking[] = [
   {
     id: '4',
     title: 'CV Review with Emma Wilson',
-    start: new Date(2023, 5, 17, 9, 0),
-    end: new Date(2023, 5, 17, 9, 45),
+    start: addDays(new Date(currentYear, currentMonth, currentDay, 9, 0), 3),
+    end: addDays(new Date(currentYear, currentMonth, currentDay, 9, 45), 3),
     clientName: 'Emma Wilson',
     clientEmail: 'emma.wilson@example.com',
     serviceType: 'CV Review',
@@ -127,6 +133,7 @@ const BookingCalendar = () => {
         onSelectEvent={handleSelectEvent}
         views={['month', 'week', 'day']}
         defaultView="week"
+        defaultDate={today}
       />
       
       {selectedBooking && (
