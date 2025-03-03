@@ -73,21 +73,19 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-tr from-archeoblue/10 to-transparent pointer-events-none rounded-full"></div>
               </div>
               
-              {/* Decorative circles with enhanced visibility */}
+              {/* Decorative circles with permanent visibility */}
               <motion.div 
-                className="absolute -z-10 -bottom-6 -right-6 w-32 h-32 rounded-full bg-archeoyellow/60 animate-float cursor-pointer hover:bg-archeoyellow/80 transition-colors"
+                className="absolute -z-10 -bottom-6 -right-6 w-32 h-32 rounded-full bg-archeoyellow cursor-pointer hover:bg-archeoyellow/80 transition-colors"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               ></motion.div>
               <motion.div 
-                className="absolute -z-10 -top-6 -left-6 w-24 h-24 rounded-full bg-archeogreen/60 animate-float cursor-pointer hover:bg-archeogreen/80 transition-colors" 
-                style={{ animationDelay: '1s' }}
+                className="absolute -z-10 -top-6 -left-6 w-24 h-24 rounded-full bg-archeogreen cursor-pointer hover:bg-archeogreen/80 transition-colors" 
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               ></motion.div>
               <motion.div 
-                className="absolute -z-10 top-1/2 -translate-y-1/2 -right-4 w-16 h-16 rounded-full bg-archeoblue/60 animate-float cursor-pointer hover:bg-archeoblue/80 transition-colors" 
-                style={{ animationDelay: '1.5s' }}
+                className="absolute -z-10 top-1/2 -translate-y-1/2 -right-4 w-16 h-16 rounded-full bg-archeoblue cursor-pointer hover:bg-archeoblue/80 transition-colors" 
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               ></motion.div>
