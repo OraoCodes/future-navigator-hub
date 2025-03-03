@@ -14,40 +14,42 @@ const About = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <span className="gold-accent mb-4 inline-block">About Us</span>
-            <h1 className="text-4xl md:text-5xl font-bold text-navy tracking-tight mb-6">
+            <span className="text-archeoyellow font-medium mb-4 inline-block">About Us</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-archeoblue tracking-tight mb-6">
               Our Mission & Vision
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Helping tech professionals advance their careers through expert guidance and personalized coaching.
+              Helping archaeology professionals advance their research through innovative tools and resources.
             </p>
           </motion.div>
 
           <div className="prose prose-lg max-w-none">
             <h2>Who We Are</h2>
             <p>
-              CareerMentor was founded in 2021 by a team of tech industry veterans who saw a need for personalized career coaching
-              specifically tailored to technology professionals. Our founders have decades of combined experience at companies like
-              Google, Amazon, Microsoft, and numerous startups.
+              Archeohub was founded in 2021 by a team of archaeology and technology experts who saw a need for specialized digital tools
+              specifically tailored to archaeology professionals. Our founders have decades of combined experience in archaeological research,
+              field operations, and cutting-edge technology development.
             </p>
 
             <h2>Our Approach</h2>
             <p>
-              We believe that career advancement in tech requires a holistic approach. It's not just about technical skills, but also
-              about communication, personal branding, negotiation tactics, and strategic career planning. Our coaching sessions are
-              designed to address all these aspects.
+              We believe that archaeological research requires a comprehensive approach. It's not just about field operations, but also
+              about data analysis, visualization, documentation, and collaboration. Our platform is designed to address all these aspects
+              of modern archaeological practice.
             </p>
 
             <h2>Our Team</h2>
             <p>
-              Our coaches are all experienced tech professionals with at least 10 years of industry experience. Many have backgrounds
-              in technical leadership, hiring, and HR, giving them unique insights into what companies are looking for in candidates.
+              Our team consists of archaeologists, software developers, data scientists, and UX designers who work together to create
+              tools that are both scientifically rigorous and user-friendly. Many have backgrounds in archaeological research and digital
+              humanities, giving them unique insights into the needs of the community.
             </p>
             
             <h2>Our Commitment</h2>
             <p>
-              We're committed to providing the highest quality coaching services with measurable results. Our success is measured
-              by our clients' success - whether that's landing a dream job, negotiating a higher salary, or advancing to a leadership role.
+              We're committed to advancing archaeological research through technology. Our success is measured by the discoveries and
+              insights our users achieve with our platform - whether that's identifying new sites, analyzing complex datasets, or
+              sharing findings with the broader scientific community.
             </p>
           </div>
         </div>

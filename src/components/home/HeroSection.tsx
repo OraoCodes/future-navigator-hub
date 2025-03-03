@@ -16,7 +16,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <span className="gold-accent mb-4 inline-block">Premium Tech Career Coaching</span>
+              <span className="text-archeoyellow font-medium mb-4 inline-block">Professional Archaeological Platform</span>
             </motion.div>
             
             <motion.h1
@@ -25,7 +25,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-4xl md:text-6xl font-bold text-archeoblue leading-tight mb-6"
             >
-              Elevate Your Tech Career to New Heights
+              Advancing Archaeological Research & Discovery
             </motion.h1>
             
             <motion.p
@@ -34,7 +34,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-xl text-gray-600 mb-10"
             >
-              Expert guidance for tech professionals seeking to advance their careers through personalized coaching, CV reviews, and interview preparation.
+              Expert tools and resources for archaeology professionals seeking to enhance their research, analysis, and field operations.
             </motion.p>
             
             <motion.div
@@ -44,13 +44,13 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-4"
             >
               <Link to="/services">
-                <Button className="primary-button w-full sm:w-auto">
-                  Book a Session
+                <Button className="bg-archeoblue text-white hover:bg-archeoblue/90 w-full sm:w-auto">
+                  Explore Our Tools
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Link to="/about">
-                <Button className="secondary-button w-full sm:w-auto">
+                <Button variant="outline" className="border-archeoblue text-archeoblue hover:bg-archeoblue/5 w-full sm:w-auto">
                   Learn More
                 </Button>
               </Link>
@@ -68,8 +68,8 @@ const HeroSection = () => {
               <div className="absolute inset-3 bg-archeoblue/10 rounded-full"></div>
               <div className="absolute inset-6 bg-white rounded-full shadow-xl flex items-center justify-center">
                 <img 
-                  src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" 
-                  alt="Thriving Tech Professional" 
+                  src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" 
+                  alt="Archaeological Research" 
                   className="w-full h-full object-cover rounded-full"
                 />
               </div>

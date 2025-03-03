@@ -45,7 +45,12 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-navy font-bold text-xl">CareerMentor</span>
+            <img 
+              src="/archeohub-logo.png" 
+              alt="Archeohub Logo" 
+              className="h-8 w-auto"
+            />
+            <span className="text-archeoblue font-bold text-xl">Archeohub</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -55,10 +60,10 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`text-sm font-medium transition-colors hover:text-navy relative ${
+                  className={`text-sm font-medium transition-colors hover:text-archeoblue relative ${
                     location.pathname === link.path
-                      ? "text-navy after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-gold"
-                      : "text-gray-600 hover:text-navy"
+                      ? "text-archeoblue after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-archeoyellow"
+                      : "text-gray-600 hover:text-archeoblue"
                   }`}
                 >
                   {link.name}
@@ -70,12 +75,12 @@ const Navbar = () => {
           {/* Call-to-action buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <Link to="/login">
-              <Button variant="outline" className="border-navy text-navy hover:bg-navy/5">
+              <Button variant="outline" className="border-archeoblue text-archeoblue hover:bg-archeoblue/5">
                 Log in
               </Button>
             </Link>
             <Link to="/services">
-              <Button className="bg-navy text-white hover:bg-navy/90">
+              <Button className="bg-archeoblue text-white hover:bg-archeoblue/90">
                 Book a Session
               </Button>
             </Link>
@@ -106,8 +111,8 @@ const Navbar = () => {
                   to={link.path}
                   className={`py-2 px-3 text-sm font-medium rounded-lg transition-colors ${
                     location.pathname === link.path
-                      ? "bg-navy/5 text-navy"
-                      : "text-gray-600 hover:bg-navy/5 hover:text-navy"
+                      ? "bg-archeoblue/5 text-archeoblue"
+                      : "text-gray-600 hover:bg-archeoblue/5 hover:text-archeoblue"
                   }`}
                   onClick={closeMenu}
                 >
@@ -116,12 +121,12 @@ const Navbar = () => {
               ))}
               <div className="flex flex-col space-y-2 pt-2 border-t">
                 <Link to="/login" onClick={closeMenu}>
-                  <Button variant="outline" className="w-full border-navy text-navy">
+                  <Button variant="outline" className="w-full border-archeoblue text-archeoblue">
                     Log in
                   </Button>
                 </Link>
                 <Link to="/services" onClick={closeMenu}>
-                  <Button className="w-full bg-navy text-white">
+                  <Button className="w-full bg-archeoblue text-white">
                     Book a Session
                   </Button>
                 </Link>
