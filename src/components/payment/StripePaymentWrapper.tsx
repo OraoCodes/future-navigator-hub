@@ -1,6 +1,7 @@
 import React from 'react';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import type { StripeElementsOptions } from '@stripe/stripe-js';
 import PaymentForm from './PaymentForm';
 
 // Initialize Stripe with your publishable key
@@ -19,7 +20,7 @@ const StripePaymentWrapper: React.FC<StripePaymentWrapperProps> = ({
   onSuccess,
   onError,
 }) => {
-  const options = {
+  const options: StripeElementsOptions = {
     clientSecret,
     appearance: {
       theme: 'stripe',
@@ -33,6 +34,12 @@ const StripePaymentWrapper: React.FC<StripePaymentWrapperProps> = ({
         borderRadius: '4px',
       },
     },
+    loader: 'auto',
+  };
+
+  const handleSuccess = () => {
+    console.log('Payment successful, triggering onSuccess callback');
+    onSuccess?.();
   };
 
   return (
@@ -40,7 +47,7 @@ const StripePaymentWrapper: React.FC<StripePaymentWrapperProps> = ({
       <PaymentForm
         clientSecret={clientSecret}
         amount={amount}
-        onSuccess={onSuccess}
+        onSuccess={handleSuccess}
         onError={onError}
       />
     </Elements>

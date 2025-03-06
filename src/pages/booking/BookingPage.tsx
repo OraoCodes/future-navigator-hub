@@ -3,13 +3,16 @@ import { useParams, useNavigate } from "react-router-dom";
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { FileText, Users, Mic, Check, Calendar, Clock } from "lucide-react";
+import { FileText, Users, Mic, Check, Calendar, Clock, CreditCard, Phone } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useUser } from "@/contexts/UserContext";
 import { calendarService } from "@/services/calendarService";
+import { createPaymentIntent } from "@/api/payment";
+import StripePaymentWrapper from "@/components/payment/StripePaymentWrapper";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 interface ServiceDetails {
   title: string;
@@ -34,6 +37,9 @@ const BookingPage = () => {
     time: "",
     notes: "",
   });
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState<'stripe' | 'mpesa'>('stripe');
   
   const services: Record<string, ServiceDetails> = {
     "cv-review": {
@@ -126,73 +132,106 @@ const BookingPage = () => {
     window.scrollTo(0, 0);
   };
   
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
+  const getAmountFromPrice = (price: string): number => {
+    // Extract number from "KES X,XXX" format
+    const amount = parseFloat(price.replace(/[^0-9.]/g, ''));
+    return amount;
+  };
+  
+  const handlePayment = async () => {
     try {
-      const dateTimeString = `${bookingDetails.date}T${bookingDetails.time.split(' ')[0]}:00`;
-      const startDateTime = new Date(dateTimeString);
+      setIsProcessingPayment(true);
+      const amount = getAmountFromPrice(serviceDetails.price);
+      const response = await createPaymentIntent(amount);
       
-      const durationMinutes = serviceDetails.duration.includes("45") 
-        ? 45 
-        : serviceDetails.duration.includes("60") 
-        ? 60 
-        : 30;
+      // Clear any existing client secret first
+      setClientSecret(null);
       
-      const endDateTime = new Date(startDateTime.getTime() + durationMinutes * 60000);
+      // Small delay to ensure state is cleared
+      await new Promise(resolve => setTimeout(resolve, 100));
       
-      const calendarResult = await calendarService.createEvent(
-        user?.id || "guest",
-        {
-          summary: `${serviceDetails.title} with ${bookingDetails.name}`,
-          description: bookingDetails.notes || `${serviceDetails.title} session`,
-          start: {
-            dateTime: startDateTime.toISOString(),
-            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-          },
-          end: {
-            dateTime: endDateTime.toISOString(),
-            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-          },
-          attendees: [
-            {
-              email: bookingDetails.email,
-              name: bookingDetails.name,
-            },
-          ],
-        }
-      );
-      
-      if (calendarResult.success) {
-        localStorage.setItem(
-          "lastBooking", 
-          JSON.stringify({
-            serviceTitle: serviceDetails.title,
-            date: bookingDetails.date,
-            time: bookingDetails.time,
-            clientName: bookingDetails.name,
-            clientEmail: bookingDetails.email,
-            duration: serviceDetails.duration,
-            price: serviceDetails.price,
-          })
-        );
-        
-        toast({
-          title: "Booking Successful!",
-          description: "Your session has been scheduled. Check your email for confirmation.",
-        });
-        
-        navigate("/booking/confirmation");
-      } else {
-        throw new Error(calendarResult.error || "Failed to create calendar event");
-      }
+      // Set new client secret
+      setClientSecret(response.clientSecret);
     } catch (error) {
-      console.error("Booking error:", error);
+      console.error('Error creating payment intent:', error);
       toast({
-        title: "Booking Error",
-        description: error instanceof Error ? error.message : "An error occurred while processing your booking",
+        title: "Payment Error",
+        description: "Failed to initialize payment. Please try again.",
         variant: "destructive",
       });
+    } finally {
+      setIsProcessingPayment(false);
+    }
+  };
+  
+  const handlePaymentSuccess = async () => {
+    try {
+      setIsProcessingPayment(true);
+      
+      // Show loading toast during redirection
+      toast({
+        title: "Payment Successful",
+        description: "Redirecting to confirmation page...",
+      });
+
+      // Save the booking details to your backend here
+      const bookingData = {
+        service: serviceDetails.title,
+        date: bookingDetails.date,
+        time: bookingDetails.time,
+        duration: serviceDetails.duration,
+        amount: serviceDetails.price,
+        paymentMethod: paymentMethod,
+      };
+
+      // Navigate to confirmation page with booking details
+      navigate('/booking/confirmation', { 
+        state: { 
+          booking: bookingData,
+          email: bookingDetails.email 
+        },
+        replace: true  // This prevents going back to payment page
+      });
+    } catch (error) {
+      console.error('Error saving booking:', error);
+      setIsProcessingPayment(false);
+      toast({
+        title: "Booking Error",
+        description: "There was an error saving your booking. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+  
+  const handlePaymentError = (error: Error) => {
+    toast({
+      title: "Payment Failed",
+      description: error.message || "Payment could not be processed. Please try again.",
+      variant: "destructive",
+    });
+  };
+  
+  const handleMpesaPayment = async () => {
+    try {
+      setIsProcessingPayment(true);
+      // TODO: Implement M-Pesa payment logic
+      toast({
+        title: "M-Pesa Payment",
+        description: "Please check your phone for the M-Pesa prompt",
+      });
+      // Simulate M-Pesa payment for now
+      setTimeout(() => {
+        handlePaymentSuccess();
+      }, 2000);
+    } catch (error) {
+      console.error('M-Pesa payment error:', error);
+      toast({
+        title: "Payment Error",
+        description: "Failed to process M-Pesa payment. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsProcessingPayment(false);
     }
   };
   
@@ -252,11 +291,11 @@ const BookingPage = () => {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="md:grid md:grid-cols-3 gap-6">
             <div className="md:col-span-2">
-              <Card className="shadow-sm">
+              <Card>
                 <CardContent className="p-6">
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={(e) => e.preventDefault()}>
                     {step === 1 && (
                       <div className="space-y-4">
                         <h2 className="text-xl font-semibold text-navy mb-4">Your Information</h2>
@@ -395,60 +434,87 @@ const BookingPage = () => {
                               
                               <p className="text-gray-500">Duration:</p>
                               <p className="font-medium">{serviceDetails.duration}</p>
+
+                              <p className="text-gray-500">Amount:</p>
+                              <p className="font-medium">{serviceDetails.price}</p>
                             </div>
                           </div>
+
+                          {!clientSecret && (
+                            <div className="space-y-4">
+                              <h3 className="font-medium">Select Payment Method</h3>
+                              <RadioGroup
+                                value={paymentMethod}
+                                onValueChange={(value) => setPaymentMethod(value as 'stripe' | 'mpesa')}
+                                className="grid grid-cols-2 gap-4"
+                              >
+                                <div className={`relative rounded-lg border-2 p-4 cursor-pointer ${
+                                  paymentMethod === 'stripe' ? 'border-blue-600 bg-blue-50' : 'border-gray-200'
+                                }`}>
+                                  <RadioGroupItem value="stripe" id="stripe" className="sr-only" />
+                                  <label htmlFor="stripe" className="flex flex-col items-center gap-2 cursor-pointer">
+                                    <CreditCard className="h-6 w-6" />
+                                    <span className="font-medium">Card Payment</span>
+                                    <span className="text-xs text-gray-500">Pay with Visa, Mastercard</span>
+                                  </label>
+                                </div>
+
+                                <div className={`relative rounded-lg border-2 p-4 cursor-pointer ${
+                                  paymentMethod === 'mpesa' ? 'border-blue-600 bg-blue-50' : 'border-gray-200'
+                                }`}>
+                                  <RadioGroupItem value="mpesa" id="mpesa" className="sr-only" />
+                                  <label htmlFor="mpesa" className="flex flex-col items-center gap-2 cursor-pointer">
+                                    <Phone className="h-6 w-6" />
+                                    <span className="font-medium">M-Pesa</span>
+                                    <span className="text-xs text-gray-500">Pay with M-Pesa</span>
+                                  </label>
+                                </div>
+                              </RadioGroup>
+                            </div>
+                          )}
                         </div>
-                        
-                        <div className="space-y-2">
-                          <Label htmlFor="cardName">Name on Card</Label>
-                          <Input
-                            id="cardName"
-                            placeholder="Enter name on card"
-                          />
-                        </div>
-                        
-                        <div className="space-y-2">
-                          <Label htmlFor="cardNumber">Card Number</Label>
-                          <Input
-                            id="cardNumber"
-                            placeholder="1234 5678 9012 3456"
-                          />
-                        </div>
-                        
-                        <div className="grid grid-cols-2 gap-4">
-                          <div className="space-y-2">
-                            <Label htmlFor="expiry">Expiry Date</Label>
-                            <Input
-                              id="expiry"
-                              placeholder="MM/YY"
-                            />
+
+                        {!clientSecret ? (
+                          <div className="pt-4 flex gap-3">
+                            <Button 
+                              type="button" 
+                              variant="outline"
+                              className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                              onClick={prevStep}
+                            >
+                              Back
+                            </Button>
+                            <Button 
+                              type="button"
+                              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
+                              onClick={paymentMethod === 'stripe' ? handlePayment : handleMpesaPayment}
+                              disabled={isProcessingPayment}
+                            >
+                              {isProcessingPayment ? (
+                                <>Processing...</>
+                              ) : (
+                                <>Pay {serviceDetails.price} with {paymentMethod === 'stripe' ? 'Card' : 'M-Pesa'}</>
+                              )}
+                            </Button>
                           </div>
-                          
-                          <div className="space-y-2">
-                            <Label htmlFor="cvc">CVC</Label>
-                            <Input
-                              id="cvc"
-                              placeholder="123"
+                        ) : (
+                          <div className="space-y-4">
+                            <StripePaymentWrapper
+                              clientSecret={clientSecret}
+                              amount={getAmountFromPrice(serviceDetails.price)}
+                              onSuccess={handlePaymentSuccess}
+                              onError={handlePaymentError}
                             />
+                            <Button 
+                              type="button" 
+                              variant="outline"
+                              className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 mt-4"
+                              onClick={() => setClientSecret(null)}
+                            >
+                              Cancel Payment
+                            </Button>
                           </div>
-                        </div>
-                        
-                        <div className="pt-4 flex gap-3">
-                          <Button 
-                            type="button" 
-                            variant="outline"
-                            className="border-gray-300 text-gray-700 hover:bg-gray-50"
-                            onClick={prevStep}
-                          >
-                            Back
-                          </Button>
-                          <Button 
-                            type="submit" 
-                            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
-                          >
-                            Pay {serviceDetails.price} & Confirm
-                          </Button>
-                        </div>
+                        )}
                       </div>
                     )}
                   </form>

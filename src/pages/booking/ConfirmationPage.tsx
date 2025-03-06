@@ -1,12 +1,43 @@
-
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Calendar, ArrowRight } from "lucide-react";
+import { CheckCircle2, Calendar, ArrowRight, CreditCard, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
+interface BookingData {
+  service: string;
+  date: string;
+  time: string;
+  duration: string;
+  amount: string;
+  paymentMethod: 'stripe' | 'mpesa';
+}
+
 const ConfirmationPage = () => {
+  const location = useLocation();
+  const { booking, email } = location.state as { booking: BookingData; email: string } || {};
+
+  if (!booking) {
+    return (
+      <MainLayout>
+        <div className="py-12 px-4">
+          <div className="container mx-auto max-w-2xl text-center">
+            <h1 className="text-3xl font-bold text-navy mb-4">Invalid Booking</h1>
+            <p className="text-xl text-gray-600 mb-8">
+              No booking information found. Please try booking again.
+            </p>
+            <Link to="/services">
+              <Button className="bg-navy text-white">
+                View Services
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </MainLayout>
+    );
+  }
+
   return (
     <MainLayout>
       <div className="py-12 px-4">
@@ -27,7 +58,7 @@ const ConfirmationPage = () => {
           >
             <h1 className="text-3xl font-bold text-navy mb-4">Booking Confirmed!</h1>
             <p className="text-xl text-gray-600 mb-8">
-              Thank you for booking a session with CareerMentor. We've sent a confirmation email with all the details.
+              Thank you for booking {booking.service}. We've sent a confirmation email to {email}.
             </p>
           </motion.div>
           
@@ -37,6 +68,40 @@ const ConfirmationPage = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="bg-white p-6 rounded-xl shadow-sm border mb-8"
           >
+            <h2 className="text-xl font-semibold mb-4">Booking Details</h2>
+            <div className="grid grid-cols-2 gap-4 text-left mb-6">
+              <div>
+                <p className="text-gray-500">Service</p>
+                <p className="font-medium">{booking.service}</p>
+              </div>
+              <div>
+                <p className="text-gray-500">Date</p>
+                <p className="font-medium">{booking.date}</p>
+              </div>
+              <div>
+                <p className="text-gray-500">Time</p>
+                <p className="font-medium">{booking.time}</p>
+              </div>
+              <div>
+                <p className="text-gray-500">Duration</p>
+                <p className="font-medium">{booking.duration}</p>
+              </div>
+              <div>
+                <p className="text-gray-500">Amount Paid</p>
+                <p className="font-medium">{booking.amount}</p>
+              </div>
+              <div>
+                <p className="text-gray-500">Payment Method</p>
+                <p className="font-medium flex items-center gap-2">
+                  {booking.paymentMethod === 'stripe' ? (
+                    <><CreditCard className="h-4 w-4" /> Card Payment</>
+                  ) : (
+                    <><Phone className="h-4 w-4" /> M-Pesa</>
+                  )}
+                </p>
+              </div>
+            </div>
+
             <h2 className="text-xl font-semibold mb-4">What's Next?</h2>
             <ul className="space-y-4 text-left">
               <li className="flex items-start gap-3">
