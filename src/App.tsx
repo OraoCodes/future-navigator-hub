@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -26,6 +25,9 @@ import PaymentsPage from "./pages/admin/PaymentsPage";
 import AnalyticsPage from "./pages/admin/AnalyticsPage";
 import NotificationsPage from "./pages/admin/NotificationsPage";
 import SettingsPage from "./pages/admin/SettingsPage";
+import PaymentTest from "./pages/PaymentTest";
+import PaymentSuccess from "./pages/PaymentSuccess";
+import PaymentError from "./pages/PaymentError";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +53,9 @@ const App = () => {
               <Route path="/blog/:postId" element={<BlogPost />} />
               <Route path="/booking/:serviceId" element={<BookingPage />} />
               <Route path="/booking/confirmation" element={<ConfirmationPage />} />
+              <Route path="/payment-test" element={<PaymentTest />} />
+              <Route path="/payment-success" element={<PaymentSuccess />} />
+              <Route path="/payment-error" element={<PaymentError />} />
               <Route path="/admin" element={<Dashboard />} />
               <Route path="/admin/calendar" element={<CalendarView />} />
               <Route path="/admin/clients" element={<ClientsPage />} />
