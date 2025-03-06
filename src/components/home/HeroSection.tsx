@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -52,7 +51,7 @@ const HeroSection = () => {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <a href="https://archeo20.netlify.app" target="_blank" rel="noopener noreferrer">
+              <a href="https://archeohub.com" target="_blank" rel="noopener noreferrer">
                 <Button className="bg-white border-2 border-archeoblue text-archeoblue hover:bg-archeoblue/5 font-medium px-6 py-3 rounded-lg shadow-sm w-full sm:w-auto">
                   <Wand className="h-4 w-4" />
                   For Founders
