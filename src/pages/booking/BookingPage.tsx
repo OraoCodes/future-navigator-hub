@@ -166,7 +166,7 @@ const BookingPage = () => {
   
   const handlePaymentSuccess = async () => {
     try {
-      setIsProcessingPayment(true);
+      console.log('Payment success handler triggered');
       
       // Show loading toast during redirection
       toast({
@@ -184,6 +184,8 @@ const BookingPage = () => {
         paymentMethod: paymentMethod,
       };
 
+      console.log('Redirecting to confirmation page with booking data:', bookingData);
+
       // Navigate to confirmation page with booking details
       navigate('/booking/confirmation', { 
         state: { 
@@ -193,7 +195,7 @@ const BookingPage = () => {
         replace: true  // This prevents going back to payment page
       });
     } catch (error) {
-      console.error('Error saving booking:', error);
+      console.error('Error in payment success handler:', error);
       setIsProcessingPayment(false);
       toast({
         title: "Booking Error",

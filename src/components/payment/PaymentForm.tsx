@@ -79,7 +79,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
       }
 
       // Confirm the payment
-      const { error, paymentIntent } = await stripe.confirmPayment({
+      const result = await stripe.confirmPayment({
         elements,
         confirmParams: {
           payment_method_data: {
@@ -93,24 +93,25 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
         },
       }) as { error?: StripeError; paymentIntent?: Stripe.PaymentIntent };
 
-      if (error) {
+      console.log('Payment confirmation result:', result);
+
+      if (result.error) {
         // Handle specific error types
-        if (error.type === 'card_error' || error.type === 'validation_error') {
-          setMessage(error.message ?? "Please check your card details.");
+        if (result.error.type === 'card_error' || result.error.type === 'validation_error') {
+          setMessage(result.error.message ?? "Please check your card details.");
         } else {
           setMessage("An unexpected error occurred.");
         }
-        onError?.(error);
+        onError?.(result.error);
         setIsProcessing(false);
-      } else if (paymentIntent) {
+      } else if (result.paymentIntent) {
         // Handle different PaymentIntent statuses
-        switch (paymentIntent.status) {
+        switch (result.paymentIntent.status) {
           case 'succeeded':
             setMessage("Payment successful!");
             setIsProcessing(false);
             console.log('Payment succeeded, calling onSuccess');
-            // Call onSuccess immediately
-            onSuccess?.();
+            await onSuccess?.();
             break;
           case 'processing':
             setMessage("Your payment is processing. We'll update you when payment is received.");
@@ -118,6 +119,20 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
             break;
           case 'requires_payment_method':
             setMessage("Your payment was not successful, please try again.");
+            setIsProcessing(false);
+            break;
+          case 'requires_confirmation':
+            // Try to confirm the payment again
+            const confirmResult = await stripe.confirmPayment({
+              elements,
+              confirmParams: {
+                return_url: window.location.origin + '/booking/confirmation',
+              },
+            }) as { error?: StripeError; paymentIntent?: Stripe.PaymentIntent };
+            if (confirmResult.error) {
+              setMessage(confirmResult.error.message ?? "Payment confirmation failed. Please try again.");
+              onError?.(confirmResult.error);
+            }
             setIsProcessing(false);
             break;
           default:
